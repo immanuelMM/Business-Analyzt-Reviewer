@@ -1,0 +1,35 @@
+{
+  "_comment": "Settings for /brd-format. Header values come from the sample BRD (RD_Team Store M-1.0). Modules map each requirement file (matched by a unique part of its file name) to its BRD module ID.",
+  "project_prefix": "Team Store",
+  "header": {
+    "type": "New Project",
+    "stakeholder": "Cody, Connor",
+    "us_uiux": "",
+    "ba_author": "Immanuel Mahusay",
+    "project_manager": "Ma. Giselle Dionisio",
+    "development_team": "",
+    "sqa_team": "",
+    "other_teams": "",
+    "priority": "",
+    "brand": ""
+  },
+  "references": [
+    "Final Design Figma Link",
+    "Monday ticket",
+    "Hand-off Video",
+    "Technical Specs",
+    "JIRA Ticket"
+  ],
+  "modules": [
+    {"id": "M-1.0", "match": "Team Stores Landing Page", "name": "Team Stores Landing Page",         "slug": "landing-page"},
+    {"id": "M-4.1", "match": "Store Home",             "name": "Store Home (Home Tab)",              "slug": "store-home"},
+    {"id": "M-3.0", "match": "Roster Management",       "name": "Roster Management (My Team(s) Tab)", "slug": "roster-management"},
+    {"id": "M-4.0", "match": "Customize New Product",   "name": "Customize New Product",              "slug": "customize-new-product"},
+    {"id": "M-5.0", "match": "Launch & Status Controls", "name": "Launch & Status Controls",          "slug": "launch-status-controls"},
+    {"id": "M-6.0", "match": "Store Status & Lifecycle", "name": "Store Status & Lifecycle",          "slug": "store-status-lifecycle"},
+    {"id": "M-7.0", "match": "Order Management",        "name": "Order Management (Orders Tab)",      "slug": "order-management"},
+    {"id": "M-8.0", "match": "Store Analytics",         "name": "Store Analytics (Reports Tab)",      "slug": "store-analytics"},
+    {"id": "M-9.0", "match": "Store Settings",          "name": "Store Settings (Settings Tab)",      "slug": "store-settings"},
+    {"id": "M-10.0", "match": "Tabbed Store Dashboard", "name": "Tabbed Store Dashboard",             "slug": "tabbed-store-dashboard"}
+  ]
+}

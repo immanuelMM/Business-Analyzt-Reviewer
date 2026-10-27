@@ -1,0 +1,173 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.ws {
+  min-height: 100vh;
+  background: $surface-page;
+
+  &__main {
+    @include container(1320px);
+    padding: 40px;
+  }
+}
+
+// KPI row
+.ws-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $sp-4;
+  margin-top: $sp-6;
+}
+
+// Main grid: chart + rail
+.ws-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: $sp-4;
+  margin-top: $sp-4;
+  align-items: start;
+}
+
+// Panel (chart / windows / payouts / table)
+.panel {
+  @include card(11px);
+  padding: $sp-5;
+
+  &__head {
+    @include flex-between;
+    margin-bottom: $sp-4;
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: $fw-bold;
+    color: $text-primary;
+  }
+
+  &__hint {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: $text-muted;
+    font-weight: $fw-medium;
+    text-transform: uppercase;
+  }
+
+  &__foot {
+    margin-top: $sp-4;
+    padding-top: $sp-3;
+    border-top: 1px solid #f1f1f3;
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+    font-size: 11.5px;
+    color: $text-muted;
+  }
+}
+
+// Revenue chart with axis labels
+.ws-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 220px;
+
+  &__col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $sp-2;
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  &__bar {
+    width: 100%;
+    max-width: 44px;
+    background: $zinc-950;
+    border-radius: 3px 3px 0 0;
+  }
+
+  &__label {
+    font-size: 11px;
+    color: $text-muted;
+  }
+}
+
+// Top stores table
+.ws-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: $fw-bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $text-muted;
+    padding: 0 $sp-3 $sp-3;
+    border-bottom: 1px solid $border-soft;
+
+    &:not(:first-child) { text-align: right; }
+  }
+
+  td {
+    padding: 14px $sp-3;
+    border-bottom: 1px solid #f6f6f7;
+    font-size: 13.5px;
+    color: $text-primary;
+
+    &:not(:first-child) { text-align: right; }
+  }
+
+  tr:last-child td { border-bottom: 0; }
+
+  &__store {
+    display: flex;
+    align-items: center;
+    gap: $sp-3;
+  }
+
+  &__name { font-weight: $fw-bold; }
+
+  &__sport {
+    font-size: 12px;
+    color: $text-muted;
+  }
+
+  &__trend {
+    font-size: 12.5px;
+    font-weight: $fw-medium;
+
+    &--up   { color: $green-600; }
+    &--down { color: $red-500; }
+  }
+}
+
+// Payouts card
+.ws-payout {
+  &__value {
+    font-size: 30px;
+    font-weight: $fw-black;
+    letter-spacing: -0.5px;
+    color: $text-primary;
+    margin-top: $sp-2;
+  }
+
+  &__sub {
+    @include flex-between;
+    margin-top: $sp-2;
+    font-size: 13px;
+    color: $text-secondary;
+  }
+}
+
+// Data-driven bar heights (revenue chart, Oct–Jun)
+$ws-bars: 34 44 62 40 52 66 78 100 72;
+@for $i from 1 through length($ws-bars) {
+  .ws-chart__col:nth-child(#{$i}) .ws-chart__bar { height: #{nth($ws-bars, $i)}#{"%"}; }
+}
+
+.ws-panel--table,
+.ws-panel--payout { margin-top: $sp-4; }

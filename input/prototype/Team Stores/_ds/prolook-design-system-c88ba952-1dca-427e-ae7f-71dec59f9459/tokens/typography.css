@@ -1,0 +1,41 @@
+/* PROLOOK type scale — Gotham (self-hosted). Weights: Book=400,
+   Medium=500, Bold=700. Mirrors the Figma typography frame exactly. */
+
+:root {
+  --font-weight-book:   400;
+  --font-weight-medium: 500;
+  --font-weight-bold:   700;
+
+  /* Display */
+  --type-display-large-size: 32px;  --type-display-large-line: 40px;  --type-display-large-weight: 700; --type-display-large-spacing: -1.5px;
+  --type-display-size: 24px;        --type-display-line: 32px;        --type-display-weight: 700;       --type-display-spacing: -1px;
+
+  /* Headings */
+  --type-h1-size: 20px; --type-h1-line: 28px; --type-h1-weight: 500; --type-h1-spacing: -0.5px;
+  --type-h2-size: 18px; --type-h2-line: 24px; --type-h2-weight: 500; --type-h2-spacing: -0.5px;
+  --type-h3-size: 16px; --type-h3-line: 24px; --type-h3-weight: 500; --type-h3-spacing: 0;
+  --type-h4-size: 16px; --type-h4-line: 24px; --type-h4-weight: 400; --type-h4-spacing: 0;
+  --type-h5-size: 14px; --type-h5-line: 20px; --type-h5-weight: 500; --type-h5-spacing: 0;
+  --type-h6-size: 14px; --type-h6-line: 20px; --type-h6-weight: 400; --type-h6-spacing: 0;
+  --type-h7-size: 12px; --type-h7-line: 16px; --type-h7-weight: 500; --type-h7-spacing: 0;
+  --type-h8-size: 12px; --type-h8-line: 16px; --type-h8-weight: 400; --type-h8-spacing: 0;
+
+  /* Body */
+  --type-body-large-size: 16px; --type-body-large-line: 24px; --type-body-large-weight: 400;
+  --type-body-size: 14px;       --type-body-line: 20px;       --type-body-weight: 400;
+  --type-body-small-size: 12px; --type-body-small-line: 16px; --type-body-small-weight: 400;
+
+  /* Button */
+  --type-button-large-size: 16px; --type-button-large-line: 20px; --type-button-large-weight: 500;
+  --type-button-size: 14px;       --type-button-line: 16px;       --type-button-weight: 500;
+  --type-button-small-size: 12px; --type-button-small-line: 16px; --type-button-small-weight: 500;
+
+  /* Label (tracked) */
+  --type-label-size: 12px;       --type-label-line: 16px; --type-label-weight: 400; --type-label-spacing: 1px;
+  --type-label-small-size: 10px; --type-label-small-line: 12px; --type-label-small-weight: 700; --type-label-small-spacing: 1px;
+
+  /* Badge (tracked) */
+  --type-badge-large-size: 14px; --type-badge-large-line: 16px; --type-badge-large-weight: 500; --type-badge-large-spacing: 1px;
+  --type-badge-size: 12px;       --type-badge-line: 16px;       --type-badge-weight: 500;       --type-badge-spacing: 1px;
+  --type-badge-small-size: 10px; --type-badge-small-line: 12px; --type-badge-small-weight: 500; --type-badge-small-spacing: 1px;
+}

@@ -1,0 +1,9 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+// ≥ 1280px
+@include desktop {
+  .hero__title { font-size: 74px; }
+
+  .ws__main { padding: 48px 40px; }
+}

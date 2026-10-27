@@ -1,0 +1,60 @@
+@use "variables" as *;
+
+// Responsive
+@mixin mobile  { @media (max-width: $bp-mobile)  { @content; } }
+@mixin tablet  { @media (min-width: #{$bp-mobile + 1}) and (max-width: $bp-tablet) { @content; } }
+@mixin desktop { @media (min-width: $bp-desktop) { @content; } }
+
+// Layout
+@mixin container($max: $container-max) {
+  max-width: $max;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Type
+@mixin eyebrow($color: $red-500) {
+  font-size: 12px;
+  font-weight: $fw-bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: $color;
+}
+
+@mixin display($size: 44px) {
+  font-size: $size;
+  line-height: 1.05;
+  font-weight: $fw-black;
+  letter-spacing: -1.5px;
+  color: $text-primary;
+}
+
+@mixin truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Surfaces
+@mixin card($radius: $radius-md, $border: $border-soft) {
+  background: $surface-page;
+  border: 1px solid $border;
+  border-radius: $radius;
+}
+
+@mixin interactive {
+  cursor: pointer;
+  transition: all $dur-base $ease-brand;
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team Stores — Overview</title>
+<link rel="stylesheet" href="../style/app.css">
+</head>
+<body class="ws">
+
+<header class="ws-header">
+  <div class="ws-header__brandbar">
+    <div class="ws-header__brand">
+      <img src="../assets/images/prolook-mark-black.png" alt="PROLOOK">
+    </div>
+    <nav class="ws-header__links">
+      <a href="#" class="ws-header__link">Discover</a>
+      <a href="#" class="ws-header__link">Build Men's</a>
+      <a href="#" class="ws-header__link">Build Women's</a>
+      <a href="workspace.html" class="ws-header__link ws-header__link--active">Team Stores</a>
+    </nav>
+  </div>
+  <div class="ws-header__toolbar">
+    <nav class="ws-tabs">
+      <button class="ws-tabs__tab ws-tabs__tab--active" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3a15 15 0 010 18M3 12h18"></path></svg>
+        Overview
+      </button>
+      <button class="ws-tabs__tab" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M4 9v10a1 1 0 001 1h14a1 1 0 001-1V9M9 20v-5h6v5"></path></svg>
+        Stores <span class="ws-tabs__count">4</span>
+      </button>
+    </nav>
+    <span class="ws-header__user">
+      Hi, Jane
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg>
+    </span>
+  </div>
+</header>
+
+<main class="ws__main">
+
+  <div class="page-head">
+    <div>
+      <h1 class="page-head__title">Overview</h1>
+      <p class="page-head__sub">Performance across 4 stores</p>
+    </div>
+    <div class="page-head__actions">
+      <button class="btn btn--primary btn--sm" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        Add Store
+      </button>
+      <button class="btn btn--ghost btn--sm" type="button">
+        All Stores
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+      <button class="btn btn--ghost btn--sm" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"></path></svg>
+        Export
+      </button>
+      <label class="search">
+        <input class="search__input" type="search" placeholder="Search Team Stores">
+        <span class="search__icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M16 16l4 4"></path></svg>
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <div class="ws-kpis">
+    <div class="kpi-card">
+      <div class="kpi-card__label">Total Revenue</div>
+      <div class="kpi-card__value">$6,882</div>
+      <div class="kpi-card__delta kpi-card__delta--up">▲ 12.4% <span class="ws-table__sport">vs last month</span></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-card__label">Orders</div>
+      <div class="kpi-card__value">150</div>
+      <div class="kpi-card__delta kpi-card__delta--up">▲ 8.1% <span class="ws-table__sport">vs last month</span></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-card__label">Active Stores</div>
+      <div class="kpi-card__value">2</div>
+      <div class="kpi-card__delta">4 total</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-card__label">Avg. Order Value</div>
+      <div class="kpi-card__value">$46</div>
+      <div class="kpi-card__delta kpi-card__delta--down">▼ 3.2% <span class="ws-table__sport">vs last month</span></div>
+    </div>
+  </div>
+
+  <div class="ws-grid">
+    <div>
+      <div class="panel">
+        <div class="panel__head">
+          <span class="panel__title">Revenue</span>
+          <span class="panel__hint">Oct – Jun</span>
+        </div>
+        <div class="ws-chart">
+          <div class="ws-chart__col"><div class="ws-chart__bar"></div><span class="ws-chart__label">Oct</span></div>
+          <div class="ws-chart__col"><div class="ws-chart__bar"></div><span class="ws-chart__label">Nov</span></div>
+          <div class="ws-chart__col"><div class="ws-chart__bar"></div><span class="ws-chart__label">Dec</span></div>
+          <div class="ws-chart__col"><div class="ws-chart__bar"></div><span class="ws-chart__label">Jan</span></div>
+          <div class="ws-chart__col"><div class="ws-chart__bar"></div><span class="ws-chart__label">Feb</span></div>
+          <div class="ws-chart__col"><div class="ws-chart__bar"></div><span class="ws-chart__label">Mar</span></div>
+          <div class="ws-chart__col"><div class="ws-chart__bar"></div><span class="ws-chart__label">Apr</span></div>
+          <div class="ws-chart__col"><div class="ws-chart__bar"></div><span class="ws-chart__label">May</span></div>
+          <div class="ws-chart__col"><div class="ws-chart__bar"></div><span class="ws-chart__label">Jun</span></div>
+        </div>
+      </div>
+
+      <div class="panel ws-panel--table">
+        <div class="panel__head">
+          <span class="panel__title">Top Performing Stores</span>
+          <a href="#" class="ws-table__trend--up">All stores →</a>
+        </div>
+        <table class="ws-table">
+          <thead>
+            <tr><th>Store</th><th>Orders</th><th>Revenue</th><th>Trend</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="ws-table__store"><span class="avatar avatar--red">RA</span><span><span class="ws-table__name">Rams</span><br><span class="ws-table__sport">Football</span></span></span></td>
+              <td>49</td><td>$1,898</td><td><span class="ws-table__trend ws-table__trend--up">↗ 12.4%</span></td>
+            </tr>
+            <tr>
+              <td><span class="ws-table__store"><span class="avatar avatar--navy">CA</span><span><span class="ws-table__name">Carlsbad Hoyas</span><br><span class="ws-table__sport">Football</span></span></span></td>
+              <td>47</td><td>$1,816</td><td><span class="ws-table__trend ws-table__trend--up">↗ 8.1%</span></td>
+            </tr>
+            <tr>
+              <td><span class="ws-table__store"><span class="avatar avatar--green">GA</span><span><span class="ws-table__name">Gators</span><br><span class="ws-table__sport">Basketball</span></span></span></td>
+              <td>42</td><td>$1,618</td><td><span class="ws-table__trend ws-table__trend--up">↗ 5.6%</span></td>
+            </tr>
+            <tr>
+              <td><span class="ws-table__store"><span class="avatar avatar--ink">HO</span><span><span class="ws-table__name">Honey Badgers</span><br><span class="ws-table__sport">Basketball</span></span></span></td>
+              <td>38</td><td>$1,551</td><td><span class="ws-table__trend ws-table__trend--down">↘ 2.1%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <span class="panel__title">Active Ordering Windows</span>
+        <div class="window-row">
+          <div class="window-row__head">
+            <span class="avatar avatar--red">RA</span>
+            <div class="window-row__info">
+              <div class="window-row__name">Rams</div>
+              <div class="window-row__meta"><strong>$1,898</strong> raised</div>
+            </div>
+            <span class="badge badge--urgent">4d left</span>
+          </div>
+          <div class="window-row__track"><div class="progress"><div class="progress__fill progress__fill--accent progress__fill--w78"></div></div></div>
+        </div>
+        <div class="window-row">
+          <div class="window-row__head">
+            <span class="avatar avatar--navy">CA</span>
+            <div class="window-row__info">
+              <div class="window-row__name">Carlsbad Hoyas</div>
+              <div class="window-row__meta"><strong>$1,816</strong> raised</div>
+            </div>
+            <span class="badge badge--info">9d left</span>
+          </div>
+          <div class="window-row__track"><div class="progress"><div class="progress__fill progress__fill--w62"></div></div></div>
+        </div>
+        <div class="window-row">
+          <div class="window-row__head">
+            <span class="avatar avatar--green">GA</span>
+            <div class="window-row__info">
+              <div class="window-row__name">Gators</div>
+              <div class="window-row__meta"><strong>$1,618</strong> raised</div>
+            </div>
+            <span class="badge badge--info">26d left</span>
+          </div>
+          <div class="window-row__track"><div class="progress"><div class="progress__fill progress__fill--w52"></div></div></div>
+        </div>
+        <div class="window-row">
+          <div class="window-row__head">
+            <span class="avatar avatar--ink">HO</span>
+            <div class="window-row__info">
+              <div class="window-row__name">Honey Badgers</div>
+              <div class="window-row__meta"><strong>$1,551</strong> raised</div>
+            </div>
+            <span class="badge badge--info">41d left</span>
+          </div>
+          <div class="window-row__track"><div class="progress"><div class="progress__fill progress__fill--w34"></div></div></div>
+        </div>
+        <div class="panel__foot">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+          4 windows open now
+        </div>
+      </div>
+
+      <div class="panel ws-panel--payout">
+        <span class="panel__title">Payouts</span>
+        <div class="ws-payout__value">$2,340</div>
+        <div class="ws-payout__sub">
+          <span>Available to pay out</span>
+          <span class="badge badge--ok">On track</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>

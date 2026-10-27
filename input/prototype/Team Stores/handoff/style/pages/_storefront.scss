@@ -1,0 +1,131 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.sf {
+  min-height: 100vh;
+  background: $surface-subtle;
+  display: flex;
+  flex-direction: column;
+}
+
+// Navy hero band
+.sf-hero {
+  background: linear-gradient(155deg, $navy, $navy-ink 70%, $zinc-950);
+  color: #fff;
+  padding: 56px 48px 40px;
+  text-align: center;
+
+  &__crest {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $sp-4;
+  }
+
+  &__eyebrow {
+    @include eyebrow(rgba(255, 255, 255, 0.6));
+  }
+
+  &__title {
+    margin-top: $sp-3;
+    font-size: 44px;
+    font-weight: $fw-black;
+    letter-spacing: -1px;
+    color: #fff;
+  }
+
+  &__meta {
+    margin-top: $sp-3;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &__badges {
+    display: flex;
+    justify-content: center;
+    gap: $sp-3;
+    margin-top: $sp-5;
+  }
+}
+
+// Countdown / window strip
+.sf-window {
+  @include flex-center;
+  gap: $sp-3;
+  background: $zinc-950;
+  color: #fff;
+  padding: $sp-3 $sp-5;
+  font-size: 13px;
+  font-weight: $fw-medium;
+
+  strong { color: #f87171; font-weight: $fw-bold; }
+}
+
+// Content sections
+.sf-section {
+  @include container(1100px);
+  width: 100%;
+  padding: 0 40px;
+  margin-top: 40px;
+
+  &:last-of-type { padding-bottom: 64px; }
+
+  &__head {
+    @include flex-between;
+    margin-bottom: $sp-4;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: $fw-bold;
+    letter-spacing: -0.3px;
+    color: $text-primary;
+
+    .sf-section__count {
+      font-size: 13px;
+      color: $text-muted;
+      font-weight: $fw-medium;
+      margin-left: $sp-2;
+    }
+  }
+}
+
+// Product grid
+.sf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $sp-4;
+}
+
+// Required-gear callout
+.sf-required {
+  @include card(14px);
+  border-color: $navy;
+  border-width: 1.5px;
+  padding: $sp-4 $sp-5;
+  display: flex;
+  align-items: center;
+  gap: $sp-4;
+  margin-bottom: $sp-4;
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: $navy;
+    color: #fff;
+    flex-shrink: 0;
+    @include flex-center;
+  }
+
+  &__title {
+    font-size: 14.5px;
+    font-weight: $fw-bold;
+    color: $text-primary;
+  }
+
+  &__body {
+    font-size: 13px;
+    color: $text-secondary;
+    margin-top: 2px;
+  }
+}

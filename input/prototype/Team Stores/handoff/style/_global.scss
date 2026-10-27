@@ -1,0 +1,45 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $surface-page;
+  color: $text-primary;
+  font-family: $font-stack;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; }
+
+a {
+  color: $text-primary;
+  text-decoration: none;
+  transition: color $dur-base $ease-brand, opacity $dur-base $ease-brand;
+
+  &:hover { color: $red-500; }
+}
+
+h1, h2, h3, h4, p { margin: 0; }
+
+summary {
+  list-style: none;
+  cursor: pointer;
+
+  &::-webkit-details-marker { display: none; }
+}
+
+.container { @include container; }

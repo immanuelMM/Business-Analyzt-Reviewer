@@ -1,0 +1,12 @@
+/* PROLOOK Design System — global CSS entry point.
+   Consumers link this single file. Keep it as @import lines only. */
+
+@import './tokens/fonts.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+
+/* Raw Figma Variables (full token system, all theme modes) + bitmap asset classes,
+   materialized exact from the .fig. The exact components consume these. */
+@import './tokens/fig-tokens.css';
+@import './components/figma/fig-assets.css';

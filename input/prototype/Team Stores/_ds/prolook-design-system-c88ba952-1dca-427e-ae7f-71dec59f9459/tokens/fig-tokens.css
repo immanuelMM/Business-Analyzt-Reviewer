@@ -1,0 +1,376 @@
+/* Generated from Figma Variables. First mode = :root default.
+   FLOAT tokens are unitless — multiply by 1px in calc() where a length is needed. */
+
+:root {
+  --badge-large-line-height: var(--line-height-badge-large);
+  --badge-large-size: var(--size-badge-large);
+  --badge-large-spacing: var(--spacing-badge-large);
+  --badge-large-weight: var(--weight-badge-large);
+  --badge-medium-line-height: var(--line-height-badge-medium);
+  --badge-medium-size: var(--size-badge-medium);
+  --badge-medium-spacing: var(--spacing-badge-medium);
+  --badge-medium-weight: var(--weight-badge-medium);
+  --badge-small-line-height: var(--line-height-badge-small);
+  --badge-small-size: var(--size-badge-small);
+  --badge-small-spacing: var(--spacing-badge-small);
+  --badge-small-weight: var(--weight-badge-small);
+  --body-large-line-height: var(--line-height-body-large);
+  --body-large-size: var(--size-body-large);
+  --body-large-spacing: var(--spacing-body-large);
+  --body-large-weight: var(--weight-body-large);
+  --body-medium-large-line-height: var(--font-line-height-2-04);
+  --body-medium-large-size: var(--size-h2);
+  --body-medium-large-typeface: var(--font-typeface-body);
+  --body-medium-large-weight-medium: var(--weight-display-large);
+  --body-medium-line-height-2: var(--font-line-height-03);
+  --body-medium-line-height: var(--line-height-body-medium);
+  --body-medium-size-2: var(--font-size-04);
+  --body-medium-size: var(--size-body-medium);
+  --body-medium-small-line-height: var(--font-line-height-2-02);
+  --body-medium-small-size: var(--size-display);
+  --body-medium-small-typeface: var(--font-typeface-body);
+  --body-medium-small-weight-book: var(--weight-display);
+  --body-medium-spacing: var(--spacing-body-medium);
+  --body-medium-typeface: var(--font-typeface-body-2);
+  --body-medium-weight-medium: var(--font-weight-medium);
+  --body-medium-weight: var(--weight-body-medium);
+  --body-small-line-height: var(--font-line-height-02-2);
+  --body-small-size: var(--font-size-02-2);
+  --body-small-typeface: var(--font-typeface-body-3);
+  --body-small-weight-book: var(--font-weight-book);
+  --border-radius-200: var(--size-200);
+  --button-circle: 500; /* @kind radius */
+  --button-large-line-height: var(--line-height-button-large);
+  --button-large-size: var(--size-button-large);
+  --button-large-spacing: var(--spacing-button-large);
+  --button-large-weight: var(--weight-button-large);
+  --button-medium-line-height: var(--line-height-button-medium);
+  --button-medium-size: var(--size-button-medium);
+  --button-medium-spacing: var(--spacing-button-medium);
+  --button-medium-weight: var(--weight-button-medium);
+  --button-rounded: 6;
+  --button-sides-2: var(--spacing-16-2);
+  --button-sides-3: var(--spacing-16-3);
+  --button-sides: var(--spacing-16);
+  --button-small-line-height: var(--line-height-button-small);
+  --button-small-size: var(--size-button-small);
+  --button-small-spacing: var(--spacing-button-small);
+  --button-small-weight: var(--weight-button-small);
+  --button-topbottom-2: var(--spacing-10-2);
+  --button-topbottom: var(--spacing-10);
+  --color-amber-500-2: rgb(245,158,11); /* @kind color */
+  --color-amber-500: rgb(245,158,11); /* @kind color */
+  --color-amber-700: rgb(180,83,9); /* @kind color */
+  --color-amber-900: rgb(120,53,15); /* @kind color */
+  --color-azure-11: rgb(0,148,213); /* @kind color */
+  --color-azure-16: rgb(0,33,51); /* @kind color */
+  --color-bg-button-primary-default: var(--color-rocky-900); /* @kind color */
+  --color-bg-button-primary-disabled: var(--color-rocky-100); /* @kind color */
+  --color-bg-button-primary-selected: var(--color-rocky-100); /* @kind color */
+  --color-bg-button-secondary-stroke-default: var(--color-rocky-200); /* @kind color */
+  --color-bg-button-secondary-stroke-disabled: var(--color-rocky-100); /* @kind color */
+  --color-bg-button-secondary-stroke-selected: var(--color-rocky-100); /* @kind color */
+  --color-bg-button-tertiary-selected: var(--color-rocky-100); /* @kind color */
+  --color-bg-fill-fill-attention-primary: var(--color-yellow-200); /* @kind color */
+  --color-bg-fill-fill-attention-secondary: var(--color-yellow-100); /* @kind color */
+  --color-bg-fill-fill-critical-primary: var(--color-red-600); /* @kind color */
+  --color-bg-fill-fill-critical-secondary: var(--color-red-100); /* @kind color */
+  --color-bg-fill-fill-info-primary: var(--color-sky-200); /* @kind color */
+  --color-bg-fill-fill-info-secondary: var(--color-sky-100); /* @kind color */
+  --color-bg-fill-fill-secondary-hover: var(--color-rocky-250); /* @kind color */
+  --color-bg-fill-fill-secondary: var(--color-rocky-150); /* @kind color */
+  --color-bg-fill-fill-success-primary: var(--color-emerald-700); /* @kind color */
+  --color-bg-fill-fill-success-secondary: var(--color-green-100); /* @kind color */
+  --color-bg-fill-fill-tertiary-hover: var(--color-rocky-100); /* @kind color */
+  --color-bg-fill-fill-warning-primary: var(--color-orange-300); /* @kind color */
+  --color-bg-fill-fill-warning-secondary: var(--color-orange-100); /* @kind color */
+  --color-bg-surface-surface-attention-secondary: var(--color-yellow-100); /* @kind color */
+  --color-bg-surface-surface-info-secondary: var(--color-sky-100); /* @kind color */
+  --color-bg-surface-surface-inverse: var(--color-zinc-900-2); /* @kind color */
+  --color-bg-surface-surface-primary: var(--color-white); /* @kind color */
+  --color-bg-surface-surface-secondary-hover: var(--color-rocky-150); /* @kind color */
+  --color-bg-surface-surface-secondary-selected: var(--color-rocky-200); /* @kind color */
+  --color-bg-surface-surface-secondary: var(--color-rocky-50); /* @kind color */
+  --color-bg-surface-surface-success-secondary: var(--color-green-100); /* @kind color */
+  --color-blue-500: rgb(59,130,246); /* @kind color */
+  --color-blue-600-2: rgb(37,99,235); /* @kind color */
+  --color-blue-600: rgb(37,99,235); /* @kind color */
+  --color-brand-black-2: rgb(0,0,0); /* @kind color */
+  --color-brand-black: rgb(0,0,0); /* @kind color */
+  --color-brand-gray-50: rgb(128,128,128); /* @kind color */
+  --color-brand-primary: var(--color-zinc-950); /* @kind color */
+  --color-brand-white: rgb(255,255,255); /* @kind color */
+  --color-emerald-700: rgb(4,120,87); /* @kind color */
+  --color-fabric-colors-b-black: rgb(0,0,0); /* @kind color */
+  --color-factory-w-white: rgb(217,217,217); /* @kind color */
+  --color-gray-12: rgb(138,138,138); /* @kind color */
+  --color-gray-13: rgb(97,97,97); /* @kind color */
+  --color-gray-14: rgb(74,74,74); /* @kind color */
+  --color-green-100: rgb(220,252,231); /* @kind color */
+  --color-green-12: rgb(41,132,90); /* @kind color */
+  --color-green-1: rgb(248,255,251); /* @kind color */
+  --color-green-600-2: rgb(22,163,74); /* @kind color */
+  --color-green-600: rgb(22,163,74); /* @kind color */
+  --color-green-700: rgb(21,128,61); /* @kind color */
+  --color-icon-icon-caution: var(--color-yellow-11); /* @kind color */
+  --color-icon-icon-critical: var(--color-red-11); /* @kind color */
+  --color-icon-icon-info: var(--color-azure-11); /* @kind color */
+  --color-icon-icon-secondary: var(--color-gray-12); /* @kind color */
+  --color-icon-icon-success: var(--color-green-12); /* @kind color */
+  --color-icon-icon-warning: var(--color-orange-11); /* @kind color */
+  --color-icon-icon: var(--color-gray-14); /* @kind color */
+  --color-icons-attention-primary: var(--color-yellow-800); /* @kind color */
+  --color-icons-attention-secondary: var(--color-amber-700); /* @kind color */
+  --color-icons-caution-strong: var(--color-yellow-950); /* @kind color */
+  --color-icons-caution: var(--color-amber-900); /* @kind color */
+  --color-icons-contrast: var(--color-zinc-200); /* @kind color */
+  --color-icons-error-2: var(--color-red-500-2); /* @kind color */
+  --color-icons-error: var(--color-red-700); /* @kind color */
+  --color-icons-info-primary: var(--color-sky-800); /* @kind color */
+  --color-icons-info-strong: var(--color-sky-800); /* @kind color */
+  --color-icons-info: var(--color-sky-600); /* @kind color */
+  --color-icons-inverse-2: var(--color-white-3); /* @kind color */
+  --color-icons-inverse-3: var(--color-white); /* @kind color */
+  --color-icons-inverse: var(--color-white); /* @kind color */
+  --color-icons-primary-2: var(--color-rocky-950-2); /* @kind color */
+  --color-icons-primary-3: var(--color-zinc-900); /* @kind color */
+  --color-icons-primary: var(--color-rocky-950); /* @kind color */
+  --color-icons-secondary-2: var(--color-zinc-500); /* @kind color */
+  --color-icons-secondary-3: var(--color-zinc-500-2); /* @kind color */
+  --color-icons-secondary: var(--color-zinc-500); /* @kind color */
+  --color-icons-success-2: var(--color-green-700); /* @kind color */
+  --color-icons-success: var(--color-emerald-700); /* @kind color */
+  --color-icons-warning-primary: var(--color-amber-900); /* @kind color */
+  --color-icons-warning-secondary: var(--color-orange-700); /* @kind color */
+  --color-icons-warning-strong: var(--color-amber-900); /* @kind color */
+  --color-icons-warning: var(--color-orange-700); /* @kind color */
+  --color-orange-100: rgb(255,237,213); /* @kind color */
+  --color-orange-11: rgb(178,132,0); /* @kind color */
+  --color-orange-16: rgb(37,26,0); /* @kind color */
+  --color-orange-300: rgb(253,186,116); /* @kind color */
+  --color-orange-700: rgb(194,65,12); /* @kind color */
+  --color-orange-900: rgb(124,45,18); /* @kind color */
+  --color-purple-500-2: rgb(168,85,247); /* @kind color */
+  --color-purple-500: rgb(168,85,247); /* @kind color */
+  --color-red-100: rgb(254,226,226); /* @kind color */
+  --color-red-11: rgb(239,77,47); /* @kind color */
+  --color-red-1: rgb(255,251,251); /* @kind color */
+  --color-red-500-2: rgb(239,68,68); /* @kind color */
+  --color-red-500: rgb(239,68,68); /* @kind color */
+  --color-red-600-2: rgb(220,38,38); /* @kind color */
+  --color-red-600: rgb(220,38,38); /* @kind color */
+  --color-red-700: rgb(185,28,28); /* @kind color */
+  --color-rocky-100: rgb(244,244,245); /* @kind color */
+  --color-rocky-150: rgb(236,236,238); /* @kind color */
+  --color-rocky-200: rgb(228,228,231); /* @kind color */
+  --color-rocky-250: rgb(220,220,224); /* @kind color */
+  --color-rocky-300: rgb(212,212,216); /* @kind color */
+  --color-rocky-350: rgb(185,185,192); /* @kind color */
+  --color-rocky-500: rgb(113,113,122); /* @kind color */
+  --color-rocky-50: rgb(250,250,250); /* @kind color */
+  --color-rocky-600-2: rgb(82,82,91); /* @kind color */
+  --color-rocky-600: rgb(82,82,91); /* @kind color */
+  --color-rocky-900: rgb(24,24,27); /* @kind color */
+  --color-rocky-950-2: rgb(9,9,11); /* @kind color */
+  --color-rocky-950: rgb(9,9,11); /* @kind color */
+  --color-sky-100: rgb(224,242,254); /* @kind color */
+  --color-sky-200: rgb(186,230,253); /* @kind color */
+  --color-sky-600: rgb(2,132,199); /* @kind color */
+  --color-sky-800: rgb(7,89,133); /* @kind color */
+  --color-text-button-disabled: var(--color-zinc-400); /* @kind color */
+  --color-text-button-inverse: var(--color-zinc-900); /* @kind color */
+  --color-text-button-primary: var(--color-white); /* @kind color */
+  --color-text-disabled: var(--color-zinc-300); /* @kind color */
+  --color-text-error: var(--color-red-700); /* @kind color */
+  --color-text-inverse: var(--color-white); /* @kind color */
+  --color-text-on-attention-primary: var(--color-yellow-800); /* @kind color */
+  --color-text-on-attention-secondary: var(--color-yellow-700); /* @kind color */
+  --color-text-on-info-primary: var(--color-sky-800); /* @kind color */
+  --color-text-on-info-secondary: var(--color-sky-600); /* @kind color */
+  --color-text-on-success-secondary: var(--color-emerald-700); /* @kind color */
+  --color-text-on-warning-primary: var(--color-orange-900); /* @kind color */
+  --color-text-on-warning-secondary: var(--color-orange-700); /* @kind color */
+  --color-text-primary-2: var(--color-rocky-950-2); /* @kind color */
+  --color-text-primary: var(--color-rocky-950); /* @kind color */
+  --color-text-secondary: var(--color-zinc-500); /* @kind color */
+  --color-text-text-caution-on-bg-fill: var(--color-yellow-15); /* @kind color */
+  --color-text-text-critical-on-bg-fill: var(--color-red-1); /* @kind color */
+  --color-text-text-info-on-bg-fill: var(--color-azure-16); /* @kind color */
+  --color-text-text-secondary: var(--color-gray-13); /* @kind color */
+  --color-text-text-success-on-bg-fill: var(--color-green-1); /* @kind color */
+  --color-text-text-warning-on-bg-fill: var(--color-orange-16); /* @kind color */
+  --color-white-2: rgb(255,255,255); /* @kind color */
+  --color-white-3: rgb(255,255,255); /* @kind color */
+  --color-white: rgb(255,255,255); /* @kind color */
+  --color-yellow-100: rgb(254,249,195); /* @kind color */
+  --color-yellow-11: rgb(153,138,0); /* @kind color */
+  --color-yellow-15: rgb(51,46,0); /* @kind color */
+  --color-yellow-200: rgb(254,240,138); /* @kind color */
+  --color-yellow-400-2: rgb(250,204,21); /* @kind color */
+  --color-yellow-400: rgb(250,204,21); /* @kind color */
+  --color-yellow-700: rgb(161,98,7); /* @kind color */
+  --color-yellow-800: rgb(133,77,14); /* @kind color */
+  --color-yellow-950: rgb(66,32,6); /* @kind color */
+  --color-zinc-200: rgb(228,228,231); /* @kind color */
+  --color-zinc-300: rgb(212,212,216); /* @kind color */
+  --color-zinc-400: rgb(161,161,170); /* @kind color */
+  --color-zinc-500-2: rgb(113,113,122); /* @kind color */
+  --color-zinc-500: rgb(113,113,122); /* @kind color */
+  --color-zinc-900-2: rgb(24,24,27); /* @kind color */
+  --color-zinc-900: rgb(24,24,27); /* @kind color */
+  --color-zinc-950: rgb(9,9,11); /* @kind color */
+  --font-family: "Gotham";
+  --font-line-height-01: 12;
+  --font-line-height-02-2: 16;
+  --font-line-height-02: 16;
+  --font-line-height-03: 20;
+  --font-line-height-2-01: 12;
+  --font-line-height-2-02: 16;
+  --font-line-height-2-04: 24;
+  --font-size-01: 10;
+  --font-size-02-2: 12;
+  --font-size-02: 12;
+  --font-size-04: 16;
+  --font-typeface-body-2: "Gotham";
+  --font-typeface-body-3: "Gotham";
+  --font-typeface-body: "Gotham";
+  --font-weight-book: "book";
+  --font-weight-medium: "medium";
+  --h1-line-height: var(--line-height-h1);
+  --h1-size: var(--size-h1);
+  --h1-spacing: var(--spacing-h1);
+  --h1-weight: var(--weight-h1);
+  --icons-icon-padding-sides-2: 0;
+  --icons-icon-padding-sides: 0;
+  --icons-icon-padding-top-bottom-2: 0;
+  --icons-icon-padding-top-bottom: 0;
+  --icons-icon-radius-2: 8;
+  --icons-icon-radius: 8;
+  --icons-icon-spacing-2: 24;
+  --icons-icon-spacing: 24;
+  --icons-icon-width: 240; /* @kind spacing */
+  --label-caption-large-line-height-2: var(--font-line-height-02);
+  --label-caption-large-line-height: var(--font-line-height-2-02);
+  --label-caption-large-size-2: var(--font-size-02);
+  --label-caption-large-size: var(--size-display);
+  --label-caption-large-typeface-2: var(--font-typeface-body-2);
+  --label-caption-large-typeface: var(--font-typeface-body);
+  --label-caption-large-weight-book: var(--weight-display);
+  --label-caption-large-weight-medium-2: var(--font-weight-medium);
+  --label-caption-large-weight-medium: var(--weight-display-large);
+  --label-caption-small-line-height-2: var(--font-line-height-2-01);
+  --label-caption-small-line-height: var(--font-line-height-01);
+  --label-caption-small-size-2: var(--size-display-large);
+  --label-caption-small-size: var(--font-size-01);
+  --label-caption-small-typeface-2: var(--font-typeface-body);
+  --label-caption-small-typeface: var(--font-typeface-body-2);
+  --label-caption-small-weight-book: var(--weight-display);
+  --label-caption-small-weight-medium-2: var(--weight-display-large);
+  --label-caption-small-weight-medium: var(--font-weight-medium);
+  --label-line-height: var(--line-height-label);
+  --label-size: var(--size-label);
+  --label-spacing: var(--spacing-label);
+  --label-weight: var(--weight-label);
+  --line-height-badge-large: 16;
+  --line-height-badge-medium: 16;
+  --line-height-badge-small: 12;
+  --line-height-body-large: 24;
+  --line-height-body-medium: 20;
+  --line-height-button-large: 20;
+  --line-height-button-medium: 16;
+  --line-height-button-small: 16;
+  --line-height-h1: 28;
+  --line-height-h2: 24;
+  --line-height-h4: 24;
+  --line-height-label: 16;
+  --radius-4: 4;
+  --radius-full: 500;
+  --size-050: 2;
+  --size-0: 0;
+  --size-100: 4;
+  --size-150: 6;
+  --size-16: 16;
+  --size-200: 8;
+  --size-20: 20;
+  --size-24: 24;
+  --size-badge-large: 14;
+  --size-badge-medium: 12;
+  --size-badge-small: 10;
+  --size-body-large: 16;
+  --size-body-medium: 14;
+  --size-button-large: 16;
+  --size-button-medium: 14;
+  --size-button-small: 12;
+  --size-display-large: 32;
+  --size-display: 24;
+  --size-h1: 20;
+  --size-h2: 18;
+  --size-h4: 16;
+  --size-label: 12;
+  --space-050: var(--size-050);
+  --space-0: var(--size-0);
+  --space-100: var(--size-100);
+  --space-150: var(--size-150);
+  --space-200: var(--size-200);
+  --spacing-10-2: 10;
+  --spacing-10: 10;
+  --spacing-16-2: 16;
+  --spacing-16-3: 16;
+  --spacing-16: 16;
+  --spacing-4: 4;
+  --spacing-badge-large: 1;
+  --spacing-badge-medium: 1;
+  --spacing-badge-small: 1;
+  --spacing-body-large: 0;
+  --spacing-body-medium: 0;
+  --spacing-button-large: 0;
+  --spacing-button-medium: 0;
+  --spacing-button-small: 0;
+  --spacing-h1: -0.5;
+  --spacing-h2: -0.5;
+  --spacing-h4: 0;
+  --spacing-label: 1;
+  --stroke-secondary-button: 1;
+  --surface-inverse: var(--color-zinc-900-2); /* @kind color */
+  --tailwind-gray-300: rgb(209,213,219); /* @kind color */
+  --tailwind-red-500: rgb(239,68,68); /* @kind color */
+  --text-error: var(--color-red-500); /* @kind color */
+  --text-inverse: var(--color-white-2); /* @kind color */
+  --text-primary: var(--color-zinc-900-2); /* @kind color */
+  --toggle-toggle-dot: var(--color-brand-white); /* @kind color */
+  --toggle-toggle-off: var(--color-brand-gray-50); /* @kind color */
+  --toggle-toggle-on: var(--color-brand-black); /* @kind color */
+  --typography-text-b1: var(--color-brand-black-2); /* @kind color */
+  --weight-badge-large: "medium";
+  --weight-badge-medium: "medium";
+  --weight-badge-small: "medium";
+  --weight-body-large: "book";
+  --weight-body-medium: "book";
+  --weight-button-large: "medium";
+  --weight-button-medium: "medium";
+  --weight-button-small: "medium";
+  --weight-display-large: "bold";
+  --weight-display: "bold";
+  --weight-h1: "medium";
+  --weight-h2: "medium";
+  --weight-h4: "book";
+  --weight-label: "book";
+  --zinc-200: rgb(228,228,231); /* @kind color */
+}
+
+:root[data-mode="mode-2"] {
+  --color-amber-500-2: rgb(245,158,11); /* @kind color */
+  --color-blue-600-2: rgb(37,99,235); /* @kind color */
+  --color-green-600-2: rgb(22,163,74); /* @kind color */
+  --color-purple-500-2: rgb(168,85,247); /* @kind color */
+  --color-red-600-2: rgb(220,38,38); /* @kind color */
+  --color-rocky-600: rgb(113,113,122); /* @kind color */
+  --color-rocky-950-2: rgb(34,34,37); /* @kind color */
+  --color-white-3: rgb(255,255,255); /* @kind color */
+  --color-yellow-400-2: rgb(250,204,21); /* @kind color */
+  --color-zinc-500-2: rgb(113,113,122); /* @kind color */
+  --toggle-toggle-dot: var(--color-brand-white); /* @kind color */
+  --toggle-toggle-off: var(--color-brand-gray-50); /* @kind color */
+  --toggle-toggle-on: var(--color-brand-black); /* @kind color */
+  --typography-text-b1: var(--color-brand-black-2); /* @kind color */
+}

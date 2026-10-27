@@ -1,0 +1,65 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.section {
+  padding: 100px 56px 44px;
+
+  &--subtle {
+    background: $surface-subtle;
+    border-top: 1px solid #f0f0f1;
+  }
+
+  &--dark {
+    background: $zinc-950;
+    padding: 84px 56px;
+  }
+
+  &__inner { @include container; }
+
+  &__eyebrow { @include eyebrow; }
+
+  &__title {
+    @include display;
+    margin-top: $sp-4;
+    max-width: 700px;
+
+    .section--dark & { color: #fff; }
+
+    &--center { margin-left: auto; margin-right: auto; max-width: none; }
+  }
+
+  &__lead {
+    margin-top: $sp-4;
+    max-width: 520px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: $text-muted;
+  }
+}
+
+// Section header row with title + actions (workspace)
+.page-head {
+  @include flex-between;
+  gap: $sp-5;
+  flex-wrap: wrap;
+
+  &__title {
+    font-size: 34px;
+    font-weight: $fw-black;
+    letter-spacing: -1px;
+    color: $text-primary;
+  }
+
+  &__sub {
+    margin-top: $sp-1;
+    font-size: 13px;
+    color: $text-secondary;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $sp-3;
+    flex-wrap: wrap;
+  }
+}

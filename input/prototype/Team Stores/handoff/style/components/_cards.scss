@@ -1,0 +1,150 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+// Base card
+.card {
+  @include card;
+  padding: $sp-4;
+}
+
+// KPI stat card (workspace overview)
+.kpi-card {
+  @include card(11px);
+  padding: $sp-4;
+
+  &__label {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: $text-muted;
+    font-weight: $fw-medium;
+    text-transform: uppercase;
+  }
+
+  &__value {
+    font-size: 28px;
+    font-weight: $fw-bold;
+    letter-spacing: -0.5px;
+    color: $text-primary;
+    margin-top: $sp-2;
+  }
+
+  &__delta {
+    font-size: 12px;
+    font-weight: $fw-medium;
+    margin-top: $sp-1;
+    color: $text-secondary;
+
+    &--up   { color: $green-600; }
+    &--down { color: $red-500; }
+  }
+
+  &--inverse {
+    background: $zinc-950;
+    border-color: $zinc-950;
+
+    .kpi-card__value { color: #fff; }
+  }
+}
+
+// Landing feature card
+.feature-card {
+  @include card(14px);
+  padding: 32px 28px;
+  transition: border-color $dur-base $ease-brand;
+
+  &:hover { border-color: $border-strong; }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    background: $zinc-950;
+    @include flex-center;
+  }
+
+  &__title {
+    margin: $sp-5 0 $sp-2;
+    font-size: 18px;
+    font-weight: $fw-bold;
+    letter-spacing: -0.3px;
+    color: $text-primary;
+  }
+
+  &__body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: $zinc-500;
+  }
+
+  &--dark {
+    background: $zinc-950;
+    border-color: $zinc-950;
+
+    &:hover { border-color: $zinc-950; }
+    .feature-card__icon  { background: $red-500; }
+    .feature-card__title { color: #fff; }
+    .feature-card__body  { color: $text-muted; }
+  }
+}
+
+// Storefront product card
+.product-card {
+  @include card(14px);
+  overflow: hidden;
+  @include interactive;
+
+  &:hover {
+    border-color: $border-strong;
+    transform: translateY(-2px);
+  }
+
+  &__media {
+    background: $zinc-100;
+    aspect-ratio: 1 / 1;
+    @include flex-center;
+    padding: 9%;
+
+    img { max-height: 100%; object-fit: contain; }
+  }
+
+  &__body { padding: 14px 16px 16px; }
+
+  &__name {
+    font-size: 14.5px;
+    font-weight: $fw-bold;
+    color: $text-primary;
+    @include truncate;
+  }
+
+  &__meta {
+    font-size: 12px;
+    color: $text-muted;
+    margin-top: 2px;
+  }
+
+  &__price {
+    font-size: 15px;
+    font-weight: $fw-bold;
+    color: $text-primary;
+    margin-top: $sp-2;
+
+    &--free { color: $green-600; }
+  }
+}
+
+// Circular team avatar
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: $fw-black;
+  flex-shrink: 0;
+  @include flex-center;
+
+  &--navy  { background: $navy; }
+  &--red   { background: $red-500; }
+  &--ink   { background: $zinc-800; }
+  &--green { background: $green-600; }
+}

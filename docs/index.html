@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BA Requirement Review</title>
+<style>
+:root {
+  --bg: #f7f7f5; --card: #ffffff; --ink: #1d1d1f; --muted: #5f6368; --line: #dcdcd8;
+  --accent: #2f5bd3; --accent-soft: #e8eefc;
+  --green: #1e7d4f; --green-soft: #e3f4ea;
+  --amber: #9a6100; --amber-soft: #fdf1dc;
+  --red: #b3261e; --red-soft: #fbe7e5;
+  --grey-soft: #eeeeec; --planned: #7a5af8; --planned-soft: #f0ebff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151517; --card: #1f1f22; --ink: #ececee; --muted: #a3a3aa; --line: #34343a;
+    --accent: #8fb0ff; --accent-soft: #23304f;
+    --green: #6fd3a0; --green-soft: #1b3428;
+    --amber: #f2c46d; --amber-soft: #3a2f17;
+    --red: #ff9b92; --red-soft: #3d1f1d;
+    --grey-soft: #2a2a2e; --planned: #b9a5ff; --planned-soft: #2c2547;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151517; --card: #1f1f22; --ink: #ececee; --muted: #a3a3aa; --line: #34343a;
+  --accent: #8fb0ff; --accent-soft: #23304f;
+  --green: #6fd3a0; --green-soft: #1b3428;
+  --amber: #f2c46d; --amber-soft: #3a2f17;
+  --red: #ff9b92; --red-soft: #3d1f1d;
+  --grey-soft: #2a2a2e; --planned: #b9a5ff; --planned-soft: #2c2547;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+a { color: var(--accent); }
+code { font: 0.88em/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--grey-soft);
+  padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+header.top { background: var(--card); border-bottom: 1px solid var(--line); }
+header.top .wrap { padding-top: 36px; padding-bottom: 28px; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.3rem); line-height: 1.2; margin: 0 0 8px; }
+.lede { color: var(--muted); font-size: 1.08rem; max-width: 720px; margin: 0; }
+nav.toc { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+nav.toc .wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; }
+nav.toc a { white-space: nowrap; text-decoration: none; color: var(--ink); font-size: .9rem;
+  padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); }
+nav.toc a:hover { border-color: var(--accent); color: var(--accent); }
+section { padding: 40px 0 8px; scroll-margin-top: 56px; }
+h2 { font-size: 1.5rem; margin: 0 0 6px; }
+h2 + .sub { color: var(--muted); margin: 0 0 22px; }
+h3 { font-size: 1.1rem; margin: 0 0 6px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.tag { display: inline-block; font-size: .75rem; font-weight: 600; letter-spacing: .02em; padding: 2px 9px;
+  border-radius: 999px; background: var(--grey-soft); color: var(--muted); vertical-align: middle; }
+.tag.planned { background: var(--planned-soft); color: var(--planned); }
+.tag.ok { background: var(--green-soft); color: var(--green); }
+
+/* ---------- main pipeline ---------- */
+.flow { display: flex; flex-direction: column; gap: 0; }
+.step { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 14px; align-items: start; }
+.step > *, .jrow > *, .grid > *, .team > * { min-width: 0; }
+body { overflow-x: hidden; }
+@media (max-width: 520px) {
+  .step { grid-template-columns: 38px minmax(0, 1fr); gap: 10px; }
+  .num { width: 38px; height: 38px; font-size: 1rem; }
+  .connector { width: 38px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .themebtn { float: none; margin-bottom: 12px; }
+}
+.num { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-weight: 700;
+  font-size: 1.15rem; background: var(--accent-soft); color: var(--accent); border: 2px solid var(--accent); }
+.step.planned .num { background: var(--planned-soft); color: var(--planned); border: 2px dashed var(--planned); }
+.step.planned .card { border: 2px dashed var(--planned); background: var(--planned-soft); }
+.connector { width: 52px; display: flex; justify-content: center; }
+.connector span { width: 2px; height: 26px; background: var(--line); }
+.step .card p { margin: 6px 0 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; font-size: .9rem; color: var(--muted); }
+.meta b { color: var(--ink); font-weight: 600; }
+
+/* ---------- team diagram ---------- */
+.team { display: grid; gap: 12px; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; }
+.agent { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; text-align: center; }
+.agent .ic { font-size: 1.6rem; line-height: 1; }
+.agent b { display: block; margin-top: 6px; }
+.agent small { color: var(--muted); display: block; margin-top: 2px; }
+.agent.planned { border: 2px dashed var(--planned); background: var(--planned-soft); }
+.arrow { color: var(--muted); font-size: 1.4rem; text-align: center; }
+.arrow small { display: block; font-size: .72rem; line-height: 1.2; }
+@media (max-width: 760px) {
+  .team { grid-template-columns: 1fr; }
+  .arrow { transform: rotate(90deg); padding: 2px 0; }
+  .arrow small { transform: rotate(-90deg); }
+}
+
+/* ---------- question journey ---------- */
+.journey { display: grid; gap: 10px; }
+.jrow { display: grid; grid-template-columns: 200px 1fr; gap: 14px; align-items: stretch; }
+.jlabel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-weight: 600; }
+.jlabel small { display: block; font-weight: 400; color: var(--muted); }
+.jrow.planned .jlabel { border: 2px dashed var(--planned); background: var(--planned-soft); }
+.outcomes { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.oc { border-radius: 10px; padding: 10px 12px; font-size: .92rem; border: 1px solid var(--line); background: var(--card); }
+.oc b { display: block; }
+.oc.green { background: var(--green-soft); border-color: transparent; }
+.oc.green b { color: var(--green); }
+.oc.amber { background: var(--amber-soft); border-color: transparent; }
+.oc.amber b { color: var(--amber); }
+.oc.red { background: var(--red-soft); border-color: transparent; }
+.oc.red b { color: var(--red); }
+.oc.grey { background: var(--grey-soft); border-color: transparent; }
+.oc.planned { background: var(--planned-soft); border: 1px dashed var(--planned); }
+.oc.planned b { color: var(--planned); }
+@media (max-width: 640px) { .jrow { grid-template-columns: 1fr; } }
+
+/* ---------- tables, misc ---------- */
+.tbl { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; overflow: hidden; font-size: .94rem; }
+.tbl th, .tbl td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tbl th { background: var(--grey-soft); font-weight: 600; }
+.tbl tr:last-child td { border-bottom: 0; }
+.tblwrap { overflow-x: auto; }
+.callout { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 0 10px 10px 0; }
+.callout.planned { border-left-color: var(--planned); background: var(--planned-soft); }
+.tree { font: .88rem/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--card);
+  border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; overflow-x: auto; white-space: pre; margin: 0; }
+.tree .c { color: var(--muted); }
+dl.gloss { display: grid; grid-template-columns: 200px 1fr; gap: 0; margin: 0; background: var(--card);
+  border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+dl.gloss dt, dl.gloss dd { margin: 0; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+dl.gloss dt { font-weight: 600; background: var(--grey-soft); }
+@media (max-width: 640px) { dl.gloss { grid-template-columns: 1fr; } dl.gloss dt { border-bottom: 0; } }
+details { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; }
+summary { cursor: pointer; font-weight: 600; }
+details p { margin: 8px 0 0; }
+footer { color: var(--muted); font-size: .85rem; padding: 40px 0 48px; }
+.themebtn { float: right; font: inherit; font-size: .85rem; background: var(--card); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <button class="themebtn" id="themebtn" type="button">Dark / light</button>
+    <h1>BA Requirement Review: how it works</h1>
+    <p class="lede">This project turns a Confluence requirement page into three things: a clear summary for the build team, a short list of questions for the requirement owners, and a finished BRD in PDF and Word. A small team of AI helpers ("agents") does the reading and writing. This guide explains each step in plain words.</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Contents">
+  <div class="wrap">
+    <a href="#flow">The big picture</a>
+    <a href="#commands">What to type</a>
+    <a href="#team">Meet the agents</a>
+    <a href="#questions">How a question is handled</a>
+    <a href="#example">Worked example</a>
+    <a href="#rovo">Rovo double-check</a>
+    <a href="#checks">Quality checks</a>
+    <a href="#files">Where files go</a>
+    <a href="#glossary">Glossary</a>
+    <a href="#faq">Tips &amp; FAQ</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ================= BIG PICTURE ================= -->
+<section id="flow">
+  <h2>The big picture</h2>
+  <p class="sub">Five steps, from the Confluence page to the finished BRD. Step 4 is done by you, by hand, with Rovo.</p>
+
+  <div class="flow">
+    <div class="step">
+      <div class="num">1</div>
+      <div class="card">
+        <h3>Copy the requirements from Confluence</h3>
+        <p>The Team Stores pages are copied from Confluence to your computer as plain text files. Next time, only the pages that changed are copied again.</p>
+        <div class="meta"><span><b>You type:</b> <code>/confluence-sync</code></span><span><b>You get:</b> one file per Confluence page</span></div>
+      </div>
+    </div>
+    <div class="connector"><span></span></div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <div class="card">
+        <h3>Review one requirement page</h3>
+        <p>Two agents read the page together. One writes a plain-language summary of what must be built. The other collects everything that is unclear, missing or contradicting other pages, and turns it into a numbered question list (Q-1, Q-2 …).</p>
+        <div class="meta"><span><b>You type:</b> <code>/req-team &lt;page&gt;</code></span><span><b>You get:</b> Implementation Summary + Clarification Questions</span></div>
+      </div>
+    </div>
+    <div class="connector"><span></span></div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <div class="card">
+        <h3>Check the questions against the prototype</h3>
+        <p>A third agent looks at the clickable prototype (the sample app) to see whether it already answers each question. It also lists screens the requirement needs that the prototype doesn't have yet ("hidden build work"). This runs automatically as part of step 2.</p>
+        <div class="meta"><span><b>Runs inside:</b> <code>/req-team</code></span><span><b>Or on its own:</b> <code>/prototype-answer</code></span><span><b>You get:</b> Prototype Answers</span></div>
+      </div>
+    </div>
+    <div class="connector"><span></span></div>
+
+    <div class="step planned">
+      <div class="num">4</div>
+      <div class="card">
+        <h3>Double-check the questions with Rovo <span class="tag planned">You, by hand</span></h3>
+        <p>Before the questions go to the owners, you open the Confluence page and ask Rovo (Atlassian's AI) whether each question is really true: does the page actually say what the question quotes, and is it really missing or contradicting? Questions Rovo can't confirm are fixed or removed.</p>
+        <div class="meta"><span><b>Where:</b> Rovo, on the Confluence page</span><span><a href="#rovo">How to do the check →</a></span></div>
+      </div>
+    </div>
+    <div class="connector"><span></span></div>
+
+    <div class="step">
+      <div class="num">5</div>
+      <div class="card">
+        <h3>Build the BRD</h3>
+        <p>The summary is laid out in the team's BRD format (the "REQUIREMENTS DOCUMENT M-n.0" layout) and saved as PDF and Word. Questions that are already answered are left out, so the BRD only shows what is still open.</p>
+        <div class="meta"><span><b>You type:</b> <code>/brd-format &lt;module&gt;</code></span><span><b>You get:</b> BRD as PDF + Word</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMMANDS ================= -->
+<section id="commands">
+  <h2>What to type</h2>
+  <p class="sub">Type these in Claude Code, inside this project folder.</p>
+  <div class="tblwrap">
+  <table class="tbl">
+    <thead><tr><th>Command</th><th>When to use it</th><th>What you get</th></tr></thead>
+    <tbody>
+      <tr><td><code>/confluence-sync</code></td><td>The UX team updated Confluence and you want the latest pages.</td><td>Changed and new pages are copied. Deleted or moved pages go to an archive folder. Nothing is ever deleted.</td></tr>
+      <tr><td><code>/confluence-sync --all</code></td><td>You want a fresh copy of every page.</td><td>All 55 Team Stores pages copied again.</td></tr>
+      <tr><td><code>/req-team &lt;file or folder&gt;</code></td><td>You want a review of a requirement page. Give one page for one review.</td><td>Summary, questions and prototype answers, each as Markdown + PDF.</td></tr>
+      <tr><td><code>/prototype-answer &lt;run&gt;</code></td><td>The prototype changed and you only want the prototype check redone.</td><td>New Prototype Answers, including the missing-screens list.</td></tr>
+      <tr><td><code>/brd-format &lt;module&gt;</code></td><td>You want the BRD. It asks whether to use the summary (plain language) or the original page (technical wording).</td><td>BRD as PDF and Word, e.g. <code>RD_Team Store M-4.1 (Store Home — Home Tab).pdf</code>.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="callout" style="margin-top:14px">Tip: choose <b>Implementation summary</b> in <code>/brd-format</code> to get the plain-language BRD with a glossary at the front.</p>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section id="team">
+  <h2>Meet the agents</h2>
+  <p class="sub">Each agent has one job. They pass their work along and message each other while they work.</p>
+
+  <div class="team" style="margin-bottom:18px">
+    <div class="agent"><div class="ic">📝</div><b>Summarizer</b><small>What must be built</small></div>
+    <div class="arrow">→<small>sends problems it finds</small></div>
+    <div class="agent"><div class="ic">❓</div><b>Consolidator</b><small>One clean question list</small></div>
+    <div class="arrow">→<small>final question list</small></div>
+    <div class="agent"><div class="ic">🖥️</div><b>Prototype answerer</b><small>Answers from the sample app</small></div>
+  </div>
+  <div class="team">
+    <div class="agent planned"><div class="ic">🔎</div><b>You + Rovo</b><small>Double-check each question is true</small></div>
+    <div class="arrow">→<small>confirmed questions</small></div>
+    <div class="agent"><div class="ic">📄</div><b>BRD formatter</b><small>PDF + Word in team layout</small></div>
+    <div class="arrow">→<small></small></div>
+    <div class="agent" style="background:var(--green-soft);border-color:transparent"><div class="ic">✅</div><b>Finished BRD</b><small>Ready for the team</small></div>
+  </div>
+
+  <div class="grid" style="margin-top:22px">
+    <div class="card"><h3>📝 Summarizer</h3><p>Reads the requirement page and writes only what the build team needs: scope, who uses it, rules, data, steps, and how to test it. Starts with a glossary. Every rule says which section it came from. Anything unclear goes straight to the Consolidator as an "open item" (OI-1, OI-2 …).</p></div>
+    <div class="card"><h3>❓ Consolidator</h3><p>Reads the same page itself and compares it with all the other Confluence pages. Merges duplicates and writes one question list, sorted by importance: <b>P1</b> blocks the build, <b>P2</b> should be answered before building, <b>P3</b> can wait. Each question quotes the source and suggests answers.</p></div>
+    <div class="card"><h3>🖥️ Prototype answerer</h3><p>Looks through the clickable prototype to see whether it already answers each question, quoting the exact place in the prototype. It also lists screens and filters the requirement needs that the prototype doesn't have yet.</p></div>
+    <div class="card"><h3>🔎 You + Rovo <span class="tag planned">Manual check</span></h3><p>Not an agent: this is your own double-check. You ask Rovo on the Confluence page whether each generated question is true, so the owners never get a question based on a misread page.</p></div>
+    <div class="card"><h3>📄 BRD formatter</h3><p>Lays the content out in the team's BRD format and makes the PDF and Word files. Copies the content word for word and never adds its own opinions. Leaves out questions that are already answered.</p></div>
+    <div class="card"><h3>🔄 Confluence sync</h3><p>Not an agent, a command. Copies the Team Stores pages from Confluence and remembers each page's version, so the next run only fetches what changed.</p></div>
+  </div>
+</section>
+
+<!-- ================= QUESTION JOURNEY ================= -->
+<section id="questions">
+  <h2>How a question is handled</h2>
+  <p class="sub">Every question goes through the same checks. Only questions nobody has answered reach the requirement owners and the BRD.</p>
+
+  <div class="journey">
+    <div class="jrow">
+      <div class="jlabel">1. Found<small>Summarizer or Consolidator</small></div>
+      <div class="outcomes">
+        <div class="oc"><b>Conflict</b>Two pages say different things.</div>
+        <div class="oc"><b>Gap</b>Something needed is missing.</div>
+        <div class="oc"><b>Ambiguous</b>It can be read more than one way.</div>
+      </div>
+    </div>
+    <div class="jrow">
+      <div class="jlabel">2. Ranked<small>Consolidator</small></div>
+      <div class="outcomes">
+        <div class="oc red"><b>P1 Blocker</b>Building can't start, or would likely be wrong.</div>
+        <div class="oc amber"><b>P2 High</b>Answer before building.</div>
+        <div class="oc grey"><b>P3 Medium</b>Can be answered during the build.</div>
+      </div>
+    </div>
+    <div class="jrow">
+      <div class="jlabel">3. Prototype check<small>Prototype answerer</small></div>
+      <div class="outcomes">
+        <div class="oc green"><b>Answered</b>The prototype settles it. Not asked; left out of the BRD.</div>
+        <div class="oc amber"><b>Partial</b>Part is settled; the rest is still asked.</div>
+        <div class="oc red"><b>Contradicts</b>The prototype does something different. Owners must pick one.</div>
+        <div class="oc grey"><b>Not in prototype</b>The prototype can't tell (e.g. server or email rules).</div>
+      </div>
+    </div>
+    <div class="jrow planned">
+      <div class="jlabel">4. Rovo double-check<small>You, by hand in Confluence</small></div>
+      <div class="outcomes">
+        <div class="oc planned"><b>Confirmed</b>Rovo agrees the problem is real. The question stays.</div>
+        <div class="oc planned"><b>Not true</b>The page doesn't say that, or it's already clear. Remove or fix the question.</div>
+        <div class="oc planned"><b>Already answered</b>Rovo finds the answer on another page. Note where, and don't ask the owners.</div>
+      </div>
+    </div>
+    <div class="jrow">
+      <div class="jlabel">5. Result<small>Owners &amp; BRD</small></div>
+      <div class="outcomes">
+        <div class="oc green"><b>Settled</b>Removed from the BRD's open items.</div>
+        <div class="oc amber"><b>Still open</b>Listed in the BRD's Open items row with its Q number, and sent to the owners.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXAMPLE ================= -->
+<section id="example">
+  <h2>Worked example: Store Home, question Q-13</h2>
+  <p class="sub">A real question from the Store Home review on 26 Oct 2026.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>The question <span class="tag">P2 · Conflict</span></h3>
+      <p>The "Your close report is ready" card (C-17) should only show if the rep hasn't seen the Close Report yet. But Home is also told never to check whether the report was seen. So when would the card ever appear?</p>
+    </div>
+    <div class="card">
+      <h3>What the prototype does <span class="tag" style="background:var(--amber-soft);color:var(--amber)">Partial</span></h3>
+      <p>The card shows on every Closed store, whether or not the report was seen. In practice it works as a permanent link to the report. That matches one of the suggested answers, but the owners still have to confirm it.</p>
+    </div>
+    <div class="card">
+      <h3>What happens next</h3>
+      <p>Because it is only partly answered, Q-13 stays open. Its open item (OI-5) stays in the BRD, and the owners decide: keep the card, or replace it with a plain link.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:22px">Store Home results at a glance</h3>
+  <div class="tblwrap">
+  <table class="tbl">
+    <thead><tr><th>Item</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td>Questions</td><td>48 (3 P1 · 21 P2 · 24 P3)</td></tr>
+      <tr><td>Prototype check</td><td>11 answered · 24 partial · 4 contradict · 9 not in prototype</td></tr>
+      <tr><td>Missing screens</td><td>20 (e.g. a store-wide list of players missing required gear)</td></tr>
+      <tr><td>BRD open items</td><td>25 (7 removed because the prototype answered them)</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ================= ROVO ================= -->
+<section id="rovo">
+  <h2>Rovo double-check <span class="tag planned">You, by hand</span></h2>
+  <p class="sub">Your own check that each generated question is true before it goes to the requirement owners.</p>
+  <div class="callout planned" style="margin-bottom:16px">AI agents can misread a page. Rovo reads the live Confluence page, so it's a good second opinion. Each question already quotes the exact source text and names the section, which makes checking quick.</div>
+  <div class="grid">
+    <div class="card"><h3>1. Pick the questions</h3><p>Open <code>clarification-questions.pdf</code>. Start with the <b>P1</b> questions, then P2. Skip the ones the prototype already answered (see <code>prototype-answers.pdf</code>).</p></div>
+    <div class="card"><h3>2. Open the page in Confluence</h3><p>Go to the requirement page the question is about, e.g. <i>Store Home (Home Tab)</i>, and open Rovo.</p></div>
+    <div class="card"><h3>3. Ask Rovo</h3><p>Paste the question and its quoted source text, and ask whether it's true. Use the prompt below.</p></div>
+    <div class="card"><h3>4. Mark the result</h3><p><b>Confirmed:</b> keep it. <b>Not true:</b> remove or fix it. <b>Already answered:</b> note where and don't send it. Then tell Claude which questions to drop, and re-run <code>/brd-format</code>.</p></div>
+  </div>
+
+  <h3 style="margin-top:22px">Prompt to paste into Rovo</h3>
+<pre class="tree">Check whether this question about our requirements is true.
+
+Question: &lt;paste the question text&gt;
+It quotes: &lt;paste the "Source / quoted text" column&gt;
+
+1. Does the page really say what is quoted, in that section?
+2. Do the two quotes really disagree, or is the detail really missing?
+3. Is the answer already written somewhere else in Confluence or Jira?
+   If yes, give me the page and the exact sentence.
+
+Answer with one of: Confirmed / Not true / Already answered, then explain.</pre>
+
+  <h3 style="margin-top:22px">Example: Q-13</h3>
+  <div class="card">
+    <p style="margin-top:0"><b>Ask Rovo on the Store Home page:</b> "Store Home section C4 says C-17 shows when 'this user has not seen the report', but Epic B says 'Home reads neither flag'. Is that a real conflict?"</p>
+    <p><b>If Rovo says Confirmed:</b> keep Q-13 and send it to the owners.<br><b>If Rovo finds an answer:</b> e.g. a newer comment saying C-17 was dropped, note the link and remove Q-13.</p>
+  </div>
+</section>
+
+<!-- ================= CHECKS ================= -->
+<section id="checks">
+  <h2>Quality checks</h2>
+  <p class="sub">Automatic checks stop an agent from finishing until its file is complete.</p>
+  <div class="grid">
+    <div class="card"><h3>Summary</h3><p>Every rule and test has a source reference, and every unclear point has an open-item number.</p></div>
+    <div class="card"><h3>Questions</h3><p>Every open item from the summary has a question. No duplicate numbers. Every question quotes its source.</p></div>
+    <div class="card"><h3>Prototype answers</h3><p>Every question has an answer row, and every answer points to the exact place in the prototype.</p></div>
+    <div class="card"><h3>BRD</h3><p>At least 95% of the source text is in the BRD, tables stay real tables, and the PDF and Word files are up to date.</p></div>
+  </div>
+</section>
+
+<!-- ================= FILES ================= -->
+<section id="files">
+  <h2>Where files go</h2>
+  <p class="sub">Everything lives in the project folder <code>business-analysis-reviewer</code>.</p>
+<pre class="tree">input/
+  requirements/
+    Team-Store-Confluence/         <span class="c">← pages copied by /confluence-sync</span>
+      Store Workspace/Store Home (Home Tab).md
+      _archive/&lt;date&gt;/            <span class="c">← pages deleted or moved in Confluence</span>
+    Team-Store/                    <span class="c">← your older PDF exports</span>
+  prototype/Team Stores/           <span class="c">← the clickable prototype</span>
+  screenshots/store-home/          <span class="c">← screen images used in the BRD</span>
+  BRD-Formatter/brd-config.json    <span class="c">← BRD header, people, module numbers</span>
+output/
+  2026-10-26-store-home-confluence/  <span class="c">← one folder per review</span>
+    implementation-summary.md / .pdf
+    clarification-questions.md / .pdf
+    prototype-answers.md / .pdf
+  brd/M-4.1-store-home/            <span class="c">← the BRD</span>
+    RD_Team Store M-4.1 (Store Home — Home Tab).pdf / .docx
+    _previous-…/                   <span class="c">← older versions, kept as backups</span>
+docs/index.html                    <span class="c">← this page</span></pre>
+</section>
+
+<!-- ================= GLOSSARY ================= -->
+<section id="glossary">
+  <h2>Glossary</h2>
+  <p class="sub">Words you'll see in the outputs.</p>
+  <dl class="gloss">
+    <dt>Agent</dt><dd>An AI helper with one job, e.g. writing the summary.</dd>
+    <dt>BRD</dt><dd>Business Requirements Document: the finished document in the team's layout.</dd>
+    <dt>Module (M-4.1)</dt><dd>The BRD number for one requirement page, e.g. M-4.1 is Store Home.</dd>
+    <dt>FR-4.1.3</dt><dd>A numbered row in the BRD (Functional Requirement).</dd>
+    <dt>BR-n / AC-n</dt><dd>A business rule / an acceptance test in the summary.</dd>
+    <dt>OI-n (open item)</dt><dd>Something unclear the Summarizer found. Each one becomes a question.</dd>
+    <dt>Q-n (question)</dt><dd>A numbered question for the requirement owners.</dd>
+    <dt>P1 / P2 / P3</dt><dd>How urgent a question is. P1 blocks the build.</dd>
+    <dt>M-n (missing screen)</dt><dd>A screen or filter the requirement needs that the prototype doesn't have.</dd>
+    <dt>Prototype</dt><dd>The clickable sample app. It shows how screens behave but has no real database.</dd>
+    <dt>Rovo</dt><dd>Atlassian's AI assistant in Confluence and Jira. You use it to double-check that each generated question is true.</dd>
+    <dt>Run folder</dt><dd>The folder in <code>output/</code> holding one review's files, named by date and page.</dd>
+  </dl>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <h2>Tips &amp; FAQ</h2>
+  <details><summary>The UX team changed a Confluence page. What do I do?</summary>
+    <p>Run <code>/confluence-sync</code>, then <code>/req-team</code> on the changed page, then <code>/brd-format</code>. Old outputs are kept as backups.</p></details>
+  <details><summary>Why does the BRD have fewer open items than the summary?</summary>
+    <p>Questions the prototype fully answered are left out of the BRD. Partly answered ones stay, listing only the part still open.</p></details>
+  <details><summary>Plain language or technical wording?</summary>
+    <p>All agents write in plain language. In <code>/brd-format</code>, choose "Implementation summary" for a plain BRD. "Original spec" copies the Confluence page word for word, which keeps its technical wording.</p></details>
+  <details><summary>A review stopped halfway ("spend limit").</summary>
+    <p>Your usage limit was reached. Files already written are kept. When the limit resets, type <code>continue</code> and only the unfinished part is redone.</p></details>
+  <details><summary>Some content looks missing compared to Confluence.</summary>
+    <p>A few Confluence widgets (embedded panels, some dates and images) don't come through when pages are copied as text. Agents flag these as gaps instead of guessing.</p></details>
+  <details><summary>Can the agents change Confluence or Jira?</summary>
+    <p>No. The Atlassian connection is read-only. Everything is written only to your computer.</p></details>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Business Analysis Reviewer · Last updated 26 Oct 2026 · Open this file in any browser; it works offline.</div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById('themebtn');
+  try { var saved = localStorage.getItem('ba-guide-theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  btn.addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('ba-guide-theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

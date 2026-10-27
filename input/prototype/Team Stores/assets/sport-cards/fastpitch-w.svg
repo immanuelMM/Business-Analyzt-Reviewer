@@ -1,0 +1,18 @@
+<svg width="244" height="93" viewBox="0 0 244 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#fb_fastpitch_w)">
+<rect x="4" y="4" width="236" height="85" rx="8" fill="white"></rect>
+</g>
+<text x="21" y="51.5" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" letter-spacing="-0.1" fill="#6b6b72">Fastpitch</text>
+<defs>
+<filter id="fb_fastpitch_w" x="0" y="0" width="244" height="93" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+<feOffset></feOffset>
+<feGaussianBlur stdDeviation="2"></feGaussianBlur>
+<feComposite in2="hardAlpha" operator="out"></feComposite>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"></feColorMatrix>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feBlend>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feBlend>
+</filter>
+</defs>
+</svg>

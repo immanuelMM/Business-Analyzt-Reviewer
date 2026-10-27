@@ -1,0 +1,14 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+// 768–1024px
+@include tablet {
+  .hero__title { font-size: 58px; }
+
+  .features-grid { grid-template-columns: 1fr 1fr; }
+
+  .ws-kpis { grid-template-columns: 1fr 1fr; }
+  .ws-grid { grid-template-columns: 1fr; }
+
+  .sf-grid { grid-template-columns: repeat(3, 1fr); }
+}

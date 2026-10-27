@@ -1,0 +1,110 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+// Landing sticky header
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 92px;
+  padding: 0 40px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #e8e8ec;
+  @include flex-between;
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    color: #0e0e10;
+
+    &:hover { color: #0e0e10; }
+
+    img { height: 36px; width: auto; }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 28px;
+    background: $border-default;
+  }
+
+  &__wordmark {
+    font-size: 17px;
+    font-weight: $fw-black;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+
+  &__account {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-3;
+    font-size: 15px;
+    font-weight: $fw-black;
+    letter-spacing: 0.08em;
+    color: #0e0e10;
+    @include interactive;
+
+    &:hover { opacity: 0.6; color: #0e0e10; }
+  }
+}
+
+// Workspace chrome — brand bar + toolbar row
+.ws-header {
+  background: $surface-page;
+  border-bottom: 1px solid $border-default;
+
+  &__brandbar {
+    @include flex-between;
+    padding: 20px 40px;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $sp-4;
+
+    img { height: 32px; width: auto; }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: $sp-6;
+  }
+
+  &__link {
+    font-size: 13px;
+    font-weight: $fw-bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $text-secondary;
+
+    &:hover { color: $text-primary; }
+
+    &--active {
+      color: $text-primary;
+      text-decoration: underline;
+      text-underline-offset: 8px;
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  &__toolbar {
+    @include flex-between;
+    padding: 14px 40px;
+    background: $surface-subtle;
+    border-top: 1px solid $border-soft;
+  }
+
+  &__user {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-2;
+    font-size: 14px;
+    font-weight: $fw-medium;
+    color: $text-primary;
+  }
+}

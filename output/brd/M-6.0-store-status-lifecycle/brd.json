@@ -1,0 +1,1339 @@
+{
+ "file_prefix": "Team Store",
+ "module": {
+  "id": "M-6.0",
+  "name": "Store Status & Lifecycle",
+  "element": "",
+  "items": [
+   {
+    "label": "Executive Summary & Problem Statement",
+    "items": [
+     {
+      "label": "The Problem",
+      "text": "Store status governs buyer access, order intake, workspace permissions, and reporting across the entire platform — but the rules defining what each state means, how transitions occur, and what changes per surface are scattered across individual UI epics rather than defined in one authoritative place."
+     },
+     {
+      "label": "The Solution",
+      "text": "A single source of truth for all four store states — Draft, Open, Closed, and Archived — covering their definitions, valid transitions, behavioral consequences per surface, and acceptance criteria. All other features reference this section for status semantics; they own only the UI surface that triggers a transition."
+     }
+    ]
+   },
+   {
+    "label": "User persona & use cases",
+    "items": [
+     "Who is this for? Store owners (reps) managing store availability; Prolook support agents handling archive reversals; buyers who encounter a closed or archived storefront URL.",
+     {
+      "label": "Scenarios encountered",
+      "text": "Setting up a new store in Draft before it's ready to go live; attempting to launch without any products added; manually closing a store mid-season to make catalog changes; a pop-up store auto-closing when its ordering window closes; extending a window by re-opening; permanently archiving a store at season end; a buyer landing on a closed storefront URL."
+     }
+    ]
+   }
+  ]
+ },
+ "header": {
+  "project_name": "Team Store (Store Status & Lifecycle)",
+  "type": "New Project",
+  "stakeholder": "Cody, Connor",
+  "us_uiux": "",
+  "ba_author": "Immanuel Mahusay",
+  "project_manager": "Ma. Giselle Dionisio",
+  "development_team": "",
+  "sqa_team": "",
+  "other_teams": "",
+  "priority": "",
+  "brand": ""
+ },
+ "versions": [
+  {
+   "version": "v1.0.0",
+   "br_fr": "FR-6.1 – FR-6.15",
+   "remarks": "Initial BRD formatted from TS-Store Status & Lifecycle-161026-094525.pdf",
+   "date": "2026-10-19"
+  }
+ ],
+ "requirements": [
+  {
+   "id": "FR-6.1",
+   "name": "Functional Requirements & Core Workflows",
+   "subtitle": "Epic A — Draft state & launch",
+   "link": "Technical Spec: Store Status & Lifecycle — Epic A",
+   "blocks": [
+    {
+     "heading": "Epic A — Draft state & launch",
+     "items": [
+      "As a rep, I want my new store to start as a draft so I can configure it fully before any buyers can see it.",
+      "As a rep, I want to be prevented from launching a store with no products, so I don’t accidentally go live with an empty catalog.",
+      {
+       "label": "Default state on creation",
+       "text": "Given a rep completes the store creation wizard and deploys, when the store is created, then it enters Draft state. The storefront is not live and no buyer-facing URL is accessible."
+      },
+      {
+       "label": "Full workspace access",
+       "text": "Given a Draft store, when the rep opens the management workspace, then all tabs (Detail, Products, Roster, Orders, Reports) are accessible and fully editable — the rep can configure everything before launch."
+      },
+      {
+       "label": "Launch gate — product required",
+       "text": "Given a Draft store with zero products, when the rep attempts to launch, then the launch action is disabled and a clear message explains that at least one product must be added before the store can open."
+      },
+      {
+       "label": "Launch gate satisfied",
+       "text": "Given a Draft store with at least one product added, when the rep clicks Launch Store, then the store transitions to Open immediately and the storefront becomes publicly accessible."
+      },
+      {
+       "label": "One-way transition",
+       "text": "Given a store that has been launched and is now Open, Closed, or Archived, then the Draft state is not available as a target — there is no “revert to draft” action anywhere in the UI."
+      },
+      {
+       "label": "Draft badge in stores list",
+       "text": "Given a Draft store, when it appears in the Stores tab list, then it shows a Draft badge and is excluded from the Open Stores KPI count."
+      },
+      {
+       "label": "Draft is stated at first entry",
+       "text": "Given a newly created Draft store, when the rep enters the workspace for the first time, then the Store Setup Guide's cover card states that the store is not yet live — see Tabbed Store Dashboard, Epic B. The guide reports status only; it does not enforce the launch gate."
+      }
+     ]
+    }
+   ],
+   "next": "FR-6.2",
+   "children": [
+    {
+     "id": "FR-6.1.1",
+     "caption": "New store in Draft state (store creation wizard deploy)",
+     "items": [
+      "As a rep, I want my new store to start as a draft so I can configure it fully before any buyers can see it.",
+      {
+       "label": "Default state on creation",
+       "text": "Given a rep completes the store creation wizard and deploys, when the store is created, then it enters Draft state. The storefront is not live and no buyer-facing URL is accessible."
+      },
+      {
+       "label": "One-way transition",
+       "text": "Given a store that has been launched and is now Open, Closed, or Archived, then the Draft state is not available as a target — there is no “revert to draft” action anywhere in the UI."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.1.2",
+     "caption": "Management workspace tabs (Draft store)",
+     "items": [
+      "As a rep, I want my new store to start as a draft so I can configure it fully before any buyers can see it.",
+      {
+       "label": "Full workspace access",
+       "text": "Given a Draft store, when the rep opens the management workspace, then all tabs (Detail, Products, Roster, Orders, Reports) are accessible and fully editable — the rep can configure everything before launch."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.1.3",
+     "caption": "Launch Store action (launch gate)",
+     "items": [
+      "As a rep, I want to be prevented from launching a store with no products, so I don’t accidentally go live with an empty catalog.",
+      {
+       "label": "Launch gate — product required",
+       "text": "Given a Draft store with zero products, when the rep attempts to launch, then the launch action is disabled and a clear message explains that at least one product must be added before the store can open."
+      },
+      {
+       "label": "Launch gate satisfied",
+       "text": "Given a Draft store with at least one product added, when the rep clicks Launch Store, then the store transitions to Open immediately and the storefront becomes publicly accessible."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.1.4",
+     "caption": "Stores tab list — Draft badge",
+     "items": [
+      {
+       "label": "Draft badge in stores list",
+       "text": "Given a Draft store, when it appears in the Stores tab list, then it shows a Draft badge and is excluded from the Open Stores KPI count."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.1.5",
+     "caption": "Store Setup Guide cover card",
+     "items": [
+      {
+       "label": "Draft is stated at first entry",
+       "text": "Given a newly created Draft store, when the rep enters the workspace for the first time, then the Store Setup Guide's cover card states that the store is not yet live — see Tabbed Store Dashboard, Epic B. The guide reports status only; it does not enforce the launch gate."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.2",
+   "name": "Functional Requirements & Core Workflows",
+   "subtitle": "Epic B — Closing a store (manual)",
+   "link": "Technical Spec: Store Status & Lifecycle — Epic B",
+   "blocks": [
+    {
+     "heading": "Epic B — Closing a store (manual)",
+     "items": [
+      "As a rep, I want to close my store so buyers can’t place new orders while I make changes, knowing I can re-open it at any time.",
+      {
+       "label": "Trigger surface",
+       "text": "Given an Open store, when the rep opens the Store Status card on the Detail tab, then a Close Store action is available. If the store is already Closed, the action is not shown."
+      },
+      {
+       "label": "Confirmation",
+       "text": "Given the rep clicks Close Store, when the confirmation appears, then it discloses: buyers won’t be able to place new orders while the store is closed; existing orders are unaffected; the store can be re-opened at any time."
+      },
+      {
+       "label": "Immediate state change",
+       "text": "Given the rep confirms, when the action is applied, then the store transitions to Closed instantly — the storefront shows a closed landing page and the status badge updates to Closed."
+      },
+      {
+       "label": "Workspace access retained",
+       "text": "Given the store is Closed, when the rep opens any workspace tab (Products, Roster, Orders, Detail), then all content remains fully editable."
+      },
+      {
+       "label": "No order disruption",
+       "text": "Given the store is Closed and orders are in-flight, then those orders continue to process normally — no automatic cancellation or hold is applied."
+      },
+      {
+       "label": "Close Report generated",
+       "text": "Given the store transitions to Closed by any path, then a Store Close Report is generated for that close event — see the Store Close Report section and Epic H below."
+      }
+     ]
+    }
+   ],
+   "next": "FR-6.3",
+   "children": [
+    {
+     "id": "FR-6.2.1",
+     "caption": "Store Status card — Close Store action (Detail tab)",
+     "items": [
+      "As a rep, I want to close my store so buyers can’t place new orders while I make changes, knowing I can re-open it at any time.",
+      {
+       "label": "Trigger surface",
+       "text": "Given an Open store, when the rep opens the Store Status card on the Detail tab, then a Close Store action is available. If the store is already Closed, the action is not shown."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.2.2",
+     "caption": "Close Store confirmation",
+     "items": [
+      {
+       "label": "Confirmation",
+       "text": "Given the rep clicks Close Store, when the confirmation appears, then it discloses: buyers won’t be able to place new orders while the store is closed; existing orders are unaffected; the store can be re-opened at any time."
+      },
+      {
+       "label": "Immediate state change",
+       "text": "Given the rep confirms, when the action is applied, then the store transitions to Closed instantly — the storefront shows a closed landing page and the status badge updates to Closed."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.2.3",
+     "caption": "Workspace tabs while Closed",
+     "items": [
+      {
+       "label": "Workspace access retained",
+       "text": "Given the store is Closed, when the rep opens any workspace tab (Products, Roster, Orders, Detail), then all content remains fully editable."
+      },
+      {
+       "label": "No order disruption",
+       "text": "Given the store is Closed and orders are in-flight, then those orders continue to process normally — no automatic cancellation or hold is applied."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.2.4",
+     "caption": "Store Close Report generation",
+     "items": [
+      {
+       "label": "Close Report generated",
+       "text": "Given the store transitions to Closed by any path, then a Store Close Report is generated for that close event — see the Store Close Report section and Epic H below."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.3",
+   "name": "Functional Requirements & Core Workflows",
+   "subtitle": "Epic C — Auto-close on ordering window close (pop-up stores)",
+   "link": "Technical Spec: Store Status & Lifecycle — Epic C",
+   "blocks": [
+    {
+     "heading": "Epic C — Auto-close on ordering window close (pop-up stores)",
+     "items": [
+      "As a rep, I want the store to automatically close when its ordering window closes, so I don’t have to manually intervene at end-of-window.",
+      {
+       "label": "Trigger",
+       "text": "Given a pop-up store with a configured close date/time, when that moment is reached, then the store automatically transitions to Closed — no rep action required."
+      },
+      {
+       "label": "Behavioral parity",
+       "text": "Given the auto-close has fired, then storefront access, order handling, workspace editability, and status badge behavior are identical to a manually closed store."
+      },
+      {
+       "label": "Rep notification",
+       "text": "Given auto-close has fired, when the rep next opens the workspace, then a banner or status indicator informs them the ordering window has closed and the store is now Closed. The Store Close Report (Epic H) is the primary presentation of this notification — the report modal replaces the banner as the entry point on first entry after close."
+      },
+      {
+       "label": "Re-open available",
+       "text": "Given the auto-closed store, when the rep wants to extend or restart the window, then they can re-open to Open from the Store Status card and optionally edit the store schedule."
+      }
+     ]
+    }
+   ],
+   "next": "FR-6.4",
+   "children": [
+    {
+     "id": "FR-6.3.1",
+     "caption": "Ordering window auto-close (pop-up store)",
+     "items": [
+      "As a rep, I want the store to automatically close when its ordering window closes, so I don’t have to manually intervene at end-of-window.",
+      {
+       "label": "Trigger",
+       "text": "Given a pop-up store with a configured close date/time, when that moment is reached, then the store automatically transitions to Closed — no rep action required."
+      },
+      {
+       "label": "Behavioral parity",
+       "text": "Given the auto-close has fired, then storefront access, order handling, workspace editability, and status badge behavior are identical to a manually closed store."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.3.2",
+     "caption": "Rep notification banner / status indicator",
+     "items": [
+      {
+       "label": "Rep notification",
+       "text": "Given auto-close has fired, when the rep next opens the workspace, then a banner or status indicator informs them the ordering window has closed and the store is now Closed. The Store Close Report (Epic H) is the primary presentation of this notification — the report modal replaces the banner as the entry point on first entry after close."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.3.3",
+     "caption": "Store Status card — re-open after auto-close",
+     "items": [
+      {
+       "label": "Re-open available",
+       "text": "Given the auto-closed store, when the rep wants to extend or restart the window, then they can re-open to Open from the Store Status card and optionally edit the store schedule."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.4",
+   "name": "Functional Requirements & Core Workflows",
+   "subtitle": "Epic D — Re-opening a closed store",
+   "link": "Technical Spec: Store Status & Lifecycle — Epic D",
+   "blocks": [
+    {
+     "heading": "Epic D — Re-opening a closed store",
+     "items": [
+      "As a rep, I want to re-open a closed store so my changes go live and buyers can order again.",
+      {
+       "label": "Trigger surface",
+       "text": "Given a Closed store, when the rep opens the Store Status card, then a Re-open Store action is available (Close Store is not shown while closed)."
+      },
+      {
+       "label": "No confirmation required",
+       "text": "Given the rep clicks Re-open Store, then the store transitions to Open immediately — re-opening is a low-risk, reversible action and requires no confirmation modal."
+      },
+      {
+       "label": "Workspace changes go live",
+       "text": "Given edits were made in the workspace while Closed, when the store is re-opened, then those changes are reflected on the live storefront immediately."
+      },
+      {
+       "label": "Status badge updates",
+       "text": "Given the store is now Open, then the status badge updates to Open in the store list, workspace header, and any KPI aggregations."
+      },
+      {
+       "label": "Prior Close Report retained",
+       "text": "Given the store is re-opened, then the Close Report for the previous close event remains viewable on demand and is not overwritten. A subsequent close produces a new, separately scoped report."
+      }
+     ]
+    }
+   ],
+   "next": "FR-6.5",
+   "children": [
+    {
+     "id": "FR-6.4.1",
+     "caption": "Store Status card — Re-open Store action",
+     "items": [
+      "As a rep, I want to re-open a closed store so my changes go live and buyers can order again.",
+      {
+       "label": "Trigger surface",
+       "text": "Given a Closed store, when the rep opens the Store Status card, then a Re-open Store action is available (Close Store is not shown while closed)."
+      },
+      {
+       "label": "No confirmation required",
+       "text": "Given the rep clicks Re-open Store, then the store transitions to Open immediately — re-opening is a low-risk, reversible action and requires no confirmation modal."
+      },
+      {
+       "label": "Workspace changes go live",
+       "text": "Given edits were made in the workspace while Closed, when the store is re-opened, then those changes are reflected on the live storefront immediately."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.4.2",
+     "caption": "Status badge (store list, workspace header, KPI aggregations)",
+     "items": [
+      {
+       "label": "Status badge updates",
+       "text": "Given the store is now Open, then the status badge updates to Open in the store list, workspace header, and any KPI aggregations."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.4.3",
+     "caption": "Prior Close Report",
+     "items": [
+      {
+       "label": "Prior Close Report retained",
+       "text": "Given the store is re-opened, then the Close Report for the previous close event remains viewable on demand and is not overwritten. A subsequent close produces a new, separately scoped report."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.5",
+   "name": "Functional Requirements & Core Workflows",
+   "subtitle": "Epic E — Archiving a store",
+   "link": "Technical Spec: Store Status & Lifecycle — Epic E",
+   "blocks": [
+    {
+     "heading": "Epic E — Archiving a store",
+     "items": [
+      "As a rep, I want to archive a store at season end so it’s removed from my active list while all history is preserved.",
+      {
+       "label": "See also",
+       "text": "Store Detail Tab — Epic C (Store archiving) for the UI surface (Danger Zone placement, modal copy). This epic defines the behavioral contract; that feature owns the controls."
+      },
+      {
+       "label": "Owner-only",
+       "text": "Given a store in Open or Closed state, when a rep who is not the owner opens the Detail tab, then the Archive Store action is not visible to them."
+      },
+      {
+       "label": "Confirmation — full consequences disclosed",
+       "text": "Given the owning rep clicks Archive Store, when the confirmation modal appears, then it explicitly states all four consequences: (1) the storefront is hidden from all buyers immediately; (2) no new orders can be placed and any active ordering window is closed; (3) the store is removed from the active stores list; (4) order history and reports are retained. It also states that this can only be undone by Prolook support."
+      },
+      {
+       "label": "Immediate storefront takedown",
+       "text": "Given the rep confirms, when archiving is applied, then the public storefront URL immediately serves a neutral closed screen and is no longer discoverable or shoppable."
+      },
+      {
+       "label": "Removed from active list",
+       "text": "Given the store is Archived, when the rep views the Stores tab, then the store no longer appears in the list."
+      },
+      {
+       "label": "Read-only workspace",
+       "text": "Given the store is Archived, when the rep opens the management workspace, then settings, products, roster, and orders are all visible but no field or action is editable."
+      },
+      {
+       "label": "History fully retained",
+       "text": "Given the store is Archived, then all order history, reports, roster data, and product records are permanently retained and accessible in the read-only workspace."
+      },
+      {
+       "label": "Support-only reversal",
+       "text": "Given the rep wishes to un-archive, when they contact Prolook support, then support can reverse the Archived state — no self-service reversal path exists in the product UI."
+      }
+     ]
+    }
+   ],
+   "next": "FR-6.6",
+   "children": [
+    {
+     "id": "FR-6.5.1",
+     "caption": "Archive Store action (Danger Zone, Detail tab)",
+     "items": [
+      "As a rep, I want to archive a store at season end so it’s removed from my active list while all history is preserved.",
+      {
+       "label": "See also",
+       "text": "Store Detail Tab — Epic C (Store archiving) for the UI surface (Danger Zone placement, modal copy). This epic defines the behavioral contract; that feature owns the controls."
+      },
+      {
+       "label": "Owner-only",
+       "text": "Given a store in Open or Closed state, when a rep who is not the owner opens the Detail tab, then the Archive Store action is not visible to them."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.5.2",
+     "caption": "Archive Store confirmation modal",
+     "items": [
+      {
+       "label": "Confirmation — full consequences disclosed",
+       "text": "Given the owning rep clicks Archive Store, when the confirmation modal appears, then it explicitly states all four consequences: (1) the storefront is hidden from all buyers immediately; (2) no new orders can be placed and any active ordering window is closed; (3) the store is removed from the active stores list; (4) order history and reports are retained. It also states that this can only be undone by Prolook support."
+      },
+      {
+       "label": "Immediate storefront takedown",
+       "text": "Given the rep confirms, when archiving is applied, then the public storefront URL immediately serves a neutral closed screen and is no longer discoverable or shoppable."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.5.3",
+     "caption": "Stores tab list (Archived store removed)",
+     "items": [
+      {
+       "label": "Removed from active list",
+       "text": "Given the store is Archived, when the rep views the Stores tab, then the store no longer appears in the list."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.5.4",
+     "caption": "Read-only management workspace (Archived store)",
+     "items": [
+      {
+       "label": "Read-only workspace",
+       "text": "Given the store is Archived, when the rep opens the management workspace, then settings, products, roster, and orders are all visible but no field or action is editable."
+      },
+      {
+       "label": "History fully retained",
+       "text": "Given the store is Archived, then all order history, reports, roster data, and product records are permanently retained and accessible in the read-only workspace."
+      },
+      {
+       "label": "Support-only reversal",
+       "text": "Given the rep wishes to un-archive, when they contact Prolook support, then support can reverse the Archived state — no self-service reversal path exists in the product UI."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.6",
+   "name": "Functional Requirements & Core Workflows",
+   "subtitle": "Epic F — Buyer-facing closed storefront screen",
+   "link": "Technical Spec: Store Status & Lifecycle — Epic F",
+   "blocks": [
+    {
+     "heading": "Epic F — Buyer-facing closed storefront screen",
+     "items": [
+      "As a buyer, I want a clear message when I land on a closed or archived storefront, so I understand why I can’t order.",
+      {
+       "label": "Closed store",
+       "text": "Given a buyer visits a Closed store’s URL, when the page loads, then they see a neutral “This store is currently closed” screen — no products, cart, or checkout are accessible."
+      },
+      {
+       "label": "Archived store",
+       "text": "Given a buyer visits an Archived store’s URL, when the page loads, then they see the same neutral closed screen — the storefront is indistinguishable from Closed to buyers; no indication it is permanently archived is surfaced."
+      },
+      {
+       "label": "No leakage",
+       "text": "Given either Closed or Archived state, when a buyer attempts to access a product URL or checkout URL directly, then they are redirected to the closed screen — no part of the storefront is accessible via direct link."
+      }
+     ]
+    }
+   ],
+   "next": "FR-6.7",
+   "children": [
+    {
+     "id": "FR-6.6.1",
+     "caption": "“This store is currently closed” screen",
+     "items": [
+      "As a buyer, I want a clear message when I land on a closed or archived storefront, so I understand why I can’t order.",
+      {
+       "label": "Closed store",
+       "text": "Given a buyer visits a Closed store’s URL, when the page loads, then they see a neutral “This store is currently closed” screen — no products, cart, or checkout are accessible."
+      },
+      {
+       "label": "Archived store",
+       "text": "Given a buyer visits an Archived store’s URL, when the page loads, then they see the same neutral closed screen — the storefront is indistinguishable from Closed to buyers; no indication it is permanently archived is surfaced."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.6.2",
+     "caption": "Direct product / checkout URL redirect",
+     "items": [
+      {
+       "label": "No leakage",
+       "text": "Given either Closed or Archived state, when a buyer attempts to access a product URL or checkout URL directly, then they are redirected to the closed screen — no part of the storefront is accessible via direct link."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.7",
+   "name": "Functional Requirements & Core Workflows",
+   "subtitle": "Epic G — Status badge & filter alignment",
+   "link": "Technical Spec: Store Status & Lifecycle — Epic G",
+   "blocks": [
+    {
+     "heading": "Epic G — Status badge & filter alignment",
+     "items": [
+      {
+       "label": "Badge display",
+       "text": "Given any store in the Stores tab list, when rendered, then its status badge reflects current state: Draft (blue), Open (green), Closed (amber). Archived stores do not appear in the list."
+      },
+      {
+       "label": "Filter parity",
+       "text": "Given the Stores tab Filter control, when opened, then Draft, Open, and Closed are available as status filter values. Archived is not a filter option — those stores are excluded from the list entirely."
+      },
+      {
+       "label": "Overview KPI",
+       "text": "Given the Active Stores KPI card on the Overview, when rendered, then it counts only stores in the Open state — Closed and Archived stores do not contribute to the count."
+      }
+     ]
+    }
+   ],
+   "next": "FR-6.8",
+   "children": [
+    {
+     "id": "FR-6.7.1",
+     "caption": "Stores tab status badge",
+     "items": [
+      {
+       "label": "Badge display",
+       "text": "Given any store in the Stores tab list, when rendered, then its status badge reflects current state: Draft (blue), Open (green), Closed (amber). Archived stores do not appear in the list."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.7.2",
+     "caption": "Stores tab Filter control",
+     "items": [
+      {
+       "label": "Filter parity",
+       "text": "Given the Stores tab Filter control, when opened, then Draft, Open, and Closed are available as status filter values. Archived is not a filter option — those stores are excluded from the list entirely."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.7.3",
+     "caption": "Overview Active Stores KPI card",
+     "items": [
+      {
+       "label": "Overview KPI",
+       "text": "Given the Active Stores KPI card on the Overview, when rendered, then it counts only stores in the Open state — Closed and Archived stores do not contribute to the count."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.8",
+   "name": "Functional Requirements & Core Workflows",
+   "subtitle": "Epic H — Store Close Report",
+   "link": "Technical Spec: Store Status & Lifecycle — Epic H",
+   "blocks": [
+    {
+     "heading": "Epic H — Store Close Report",
+     "items": [
+      "As a rep, I want a complete review of everything that happened during the store’s ordering window the moment it closes, so I can verify the numbers, hand off fulfilment, and report back to the team without assembling it myself.",
+      "As a rep, I want to pull that close report up again later on demand, so I’m not dependent on catching it the first time.",
+      {
+       "label": "Generated on every close event",
+       "text": "Given a store transitions to Closed by any path, then a Store Close Report scoped to that Active Order Window is generated and available."
+      },
+      {
+       "label": "Auto-trigger on first entry",
+       "text": "Given a Closed store and a user who has not yet seen the report for that close event, when that user next opens the workspace, then the Store Close Report is presented as a prominent full-screen modal before any other workspace content is actionable."
+      },
+      {
+       "label": "Trigger fires once per user per close event",
+       "text": "Given the user has viewed or dismissed the report, when they re-enter the workspace, then the modal does not re-appear and the workspace loads in its normal Closed state."
+      },
+      {
+       "label": "Re-close re-arms the trigger",
+       "text": "Given a store goes Closed → Open → Closed, when a user next enters the workspace, then the modal fires once more for the new close event, scoped to the new window."
+      },
+      {
+       "label": "Dismissal paths",
+       "text": "Given the modal is open, when the user selects View full report, Done, the close icon, Escape, or the backdrop, then the modal closes and the report is marked seen for that user. View full report additionally lands them on the detail layer."
+      },
+      {
+       "label": "On-demand availability",
+       "text": "Given a Closed or Archived store, when the user opens the Reports tab, then a Store Close Report entry is present and opens the report in review mode."
+      },
+      {
+       "label": "Unavailable before close",
+       "text": "Given a Draft or Open store, when the user opens the Reports tab, then the Store Close Report entry is visible but disabled, with helper text explaining it becomes available when the store closes."
+      },
+      {
+       "label": "Secondary entry point",
+       "text": "Given a Closed store, when the rep opens the Store Status card, then a View Close Report link is available alongside Re-open Store."
+      },
+      {
+       "label": "Figures reconcile",
+       "text": "Given the report is open, then every figure in the summary layer matches the corresponding figure on the Reports tab for the same window — no figure is computed by a second, divergent method."
+      },
+      {
+       "label": "Complete order coverage",
+       "text": "Given the report’s detail layer, then every order placed during the Active Order Window is present, including cancelled and refunded orders, each with its current production stage and fulfilment status."
+      },
+      {
+       "label": "Exports",
+       "text": "Given the report is open, when the user exports, then a summary PDF and a full order-level CSV are both available, named per the convention above. No other export format is offered."
+      },
+      {
+       "label": "Team-manager parity",
+       "text": "Given a team-manager-role user opens the report, then they can view and export the same content as the rep; owner-only lifecycle actions remain hidden."
+      },
+      {
+       "label": "Retained after re-open and archive",
+       "text": "Given a store is re-opened or archived, then previously generated Close Reports remain viewable on demand and their exports continue to work."
+      },
+      {
+       "label": "Skip is always available",
+       "text": "Given the summary layer is displayed at any point in the sequence, then a Skip to full report control is visible and moves the user directly to the detail layer."
+      }
+     ]
+    }
+   ],
+   "next": "FR-6.9",
+   "children": [
+    {
+     "id": "FR-6.8.1",
+     "caption": "Store Close Report full-screen modal (auto-trigger)",
+     "items": [
+      "As a rep, I want a complete review of everything that happened during the store’s ordering window the moment it closes, so I can verify the numbers, hand off fulfilment, and report back to the team without assembling it myself.",
+      {
+       "label": "Generated on every close event",
+       "text": "Given a store transitions to Closed by any path, then a Store Close Report scoped to that Active Order Window is generated and available."
+      },
+      {
+       "label": "Auto-trigger on first entry",
+       "text": "Given a Closed store and a user who has not yet seen the report for that close event, when that user next opens the workspace, then the Store Close Report is presented as a prominent full-screen modal before any other workspace content is actionable."
+      },
+      {
+       "label": "Trigger fires once per user per close event",
+       "text": "Given the user has viewed or dismissed the report, when they re-enter the workspace, then the modal does not re-appear and the workspace loads in its normal Closed state."
+      },
+      {
+       "label": "Re-close re-arms the trigger",
+       "text": "Given a store goes Closed → Open → Closed, when a user next enters the workspace, then the modal fires once more for the new close event, scoped to the new window."
+      },
+      {
+       "label": "Dismissal paths",
+       "text": "Given the modal is open, when the user selects View full report, Done, the close icon, Escape, or the backdrop, then the modal closes and the report is marked seen for that user. View full report additionally lands them on the detail layer."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.8.2",
+     "caption": "Summary layer — Skip to full report control",
+     "items": [
+      {
+       "label": "Figures reconcile",
+       "text": "Given the report is open, then every figure in the summary layer matches the corresponding figure on the Reports tab for the same window — no figure is computed by a second, divergent method."
+      },
+      {
+       "label": "Skip is always available",
+       "text": "Given the summary layer is displayed at any point in the sequence, then a Skip to full report control is visible and moves the user directly to the detail layer."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.8.3",
+     "caption": "Detail layer — full order table",
+     "items": [
+      {
+       "label": "Complete order coverage",
+       "text": "Given the report’s detail layer, then every order placed during the Active Order Window is present, including cancelled and refunded orders, each with its current production stage and fulfilment status."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.8.4",
+     "caption": "Reports tab — Store Close Report entry",
+     "items": [
+      "As a rep, I want to pull that close report up again later on demand, so I’m not dependent on catching it the first time.",
+      {
+       "label": "On-demand availability",
+       "text": "Given a Closed or Archived store, when the user opens the Reports tab, then a Store Close Report entry is present and opens the report in review mode."
+      },
+      {
+       "label": "Unavailable before close",
+       "text": "Given a Draft or Open store, when the user opens the Reports tab, then the Store Close Report entry is visible but disabled, with helper text explaining it becomes available when the store closes."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.8.5",
+     "caption": "Store Status card — View Close Report link",
+     "items": [
+      "As a rep, I want to pull that close report up again later on demand, so I’m not dependent on catching it the first time.",
+      {
+       "label": "Secondary entry point",
+       "text": "Given a Closed store, when the rep opens the Store Status card, then a View Close Report link is available alongside Re-open Store."
+      }
+     ]
+    },
+    {
+     "id": "FR-6.8.6",
+     "caption": "Export — Summary PDF / Full order-level CSV",
+     "items": [
+      {
+       "label": "Exports",
+       "text": "Given the report is open, when the user exports, then a summary PDF and a full order-level CSV are both available, named per the convention above. No other export format is offered."
+      },
+      {
+       "label": "Team-manager parity",
+       "text": "Given a team-manager-role user opens the report, then they can view and export the same content as the rep; owner-only lifecycle actions remain hidden."
+      },
+      {
+       "label": "Retained after re-open and archive",
+       "text": "Given a store is re-opened or archived, then previously generated Close Reports remain viewable on demand and their exports continue to work."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.9",
+   "name": "Store Definitions",
+   "link": "Technical Spec: Store Status & Lifecycle — Store Definitions",
+   "blocks": [
+    {
+     "heading": "Store Definitions",
+     "items": [
+      "Status · Detail",
+      {
+       "label": "DRAFT",
+       "text": "The default state of every newly created store. The storefront is not live and is inaccessible to buyers. The rep has full management access to configure the store — products, roster, settings, and schedule. A Draft store cannot be launched until at least one product has been added. Once launched it transitions to Open and cannot return to Draft. Draft stores exist only in the management workspace."
+      },
+      {
+       "label": "OPEN",
+       "text": "The store is fully operational. The storefront is publicly accessible; buyers can browse, configure, and place new orders. The rep has full management access. This is the state a store enters on launch and returns to when manually re-opened from Closed."
+      },
+      {
+       "label": "CLOSED",
+       "text": "The storefront is closed to new orders, but the management workspace remains fully editable and existing orders continue to process normally. Can be entered manually (rep pauses from the Store Status card) or automatically when a pop-up store's configured ordering window close date is reached. The store can be re-opened to Open at any time. Corresponds to the “store closing” state referenced in Store Detail Tab Epics C–D."
+      },
+      {
+       "label": "ARCHIVED",
+       "text": "The store is permanently shut down. The storefront is hidden from all buyers immediately; no new orders can be placed; any active ordering window is closed; and the store is removed from the active stores list. All order history and reports are retained as a read-only record. Cannot be self-reversed — restoring an archived store can only be done by a managing rep."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.10",
+   "name": "Valid State Transitions",
+   "link": "Technical Spec: Store Status & Lifecycle — Valid State Transitions",
+   "blocks": [
+    {
+     "heading": "Valid State Transitions",
+     "items": [
+      "From > To · Trigger - Who - Reversible?",
+      {
+       "label": "Draft → Open",
+       "text": "Manual only — rep clicks Launch Store (requires at least one product to be added first). Rep only. One-way — a store cannot return to Draft once launched."
+      },
+      {
+       "label": "Open → Closed",
+       "text": "Manual (rep clicks Pause on the Store Status card) or automatic (scheduled ordering window close date reached). Rep or system. Reversible — rep re-opens to Open at any time."
+      },
+      {
+       "label": "Closed → Open",
+       "text": "Manual only — rep clicks Re-open Store on the Store Status card. Rep only. Reversible."
+      },
+      {
+       "label": "Open → Archived",
+       "text": "Manual only — store owner clicks Archive Store in the Danger Zone of the Detail tab. Owner only. Irreversible without a support request."
+      },
+      {
+       "label": "Closed → Archived",
+       "text": "Manual only — store owner clicks Archive Store in the Danger Zone of the Detail tab. Owner only. Irreversible without a support request."
+      },
+      {
+       "label": "Archived → Open or Closed",
+       "text": "Not self-service. Requires a Prolook support request. Support staff only."
+      },
+      {
+       "label": "Open / Closed / Archived → Draft",
+       "text": "Not allowed. Draft is the entry state only. Once a store is launched it can never return to Draft."
+      },
+      {
+       "label": "Note",
+       "text": "There is no store deletion. Archiving is the terminal state. Draft (pre-launch) is a setup state and not part of the Open / Closed / Archived lifecycle — it transitions to Open on first launch."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.11",
+   "name": "Behavior Matrix by Surface",
+   "link": "Technical Spec: Store Status & Lifecycle — Behavior Matrix by Surface",
+   "blocks": [
+    {
+     "heading": "Behavior Matrix by Surface",
+     "items": [
+      "Surface · Draft · Open · Closed · Archived",
+      {
+       "label": "Storefront (buyer-facing)",
+       "items": [
+        {
+         "label": "Draft",
+         "text": "Not live — storefront URL is inaccessible to buyers"
+        },
+        {
+         "label": "Open",
+         "text": "Fully accessible — browse, configure, checkout"
+        },
+        {
+         "label": "Closed",
+         "text": "“This store is closed” landing page — no shopping or checkout"
+        },
+        {
+         "label": "Archived",
+         "text": "Hidden immediately — URL serves a neutral closed screen"
+        }
+       ]
+      },
+      {
+       "label": "New orders",
+       "items": [
+        {
+         "label": "Draft",
+         "text": "Blocked — not live"
+        },
+        {
+         "label": "Open",
+         "text": "Allowed"
+        },
+        {
+         "label": "Closed",
+         "text": "Blocked"
+        },
+        {
+         "label": "Archived",
+         "text": "Blocked"
+        }
+       ]
+      },
+      {
+       "label": "Existing / in-flight orders",
+       "items": [
+        {
+         "label": "Draft",
+         "text": "None — store has never been open"
+        },
+        {
+         "label": "Open",
+         "text": "Unaffected"
+        },
+        {
+         "label": "Closed",
+         "text": "Unaffected — continue to process normally"
+        },
+        {
+         "label": "Archived",
+         "text": "Unaffected — retained as read-only history"
+        }
+       ]
+      },
+      {
+       "label": "Management workspace",
+       "items": [
+        {
+         "label": "Draft",
+         "text": "Fully editable"
+        },
+        {
+         "label": "Open",
+         "text": "Fully editable"
+        },
+        {
+         "label": "Closed",
+         "text": "Fully editable — changes go live on re-open"
+        },
+        {
+         "label": "Archived",
+         "text": "Read-only — all records viewable, nothing editable"
+        }
+       ]
+      },
+      {
+       "label": "Open stores list",
+       "items": [
+        {
+         "label": "Draft",
+         "text": "Visible — Draft badge"
+        },
+        {
+         "label": "Open",
+         "text": "Visible — Open badge"
+        },
+        {
+         "label": "Closed",
+         "text": "Visible — Closed badge"
+        },
+        {
+         "label": "Archived",
+         "text": "Removed from list entirely"
+        }
+       ]
+      },
+      {
+       "label": "Ordering window (pop-up only)",
+       "items": [
+        {
+         "label": "Draft",
+         "text": "Configurable but not running"
+        },
+        {
+         "label": "Open",
+         "text": "Runs as configured"
+        },
+        {
+         "label": "Closed",
+         "text": "Suspended — does not advance"
+        },
+        {
+         "label": "Archived",
+         "text": "Closed immediately and permanently"
+        }
+       ]
+      },
+      {
+       "label": "Order history & reports",
+       "items": [
+        {
+         "label": "Draft",
+         "text": "Empty — no orders yet"
+        },
+        {
+         "label": "Open",
+         "text": "Accessible"
+        },
+        {
+         "label": "Closed",
+         "text": "Accessible"
+        },
+        {
+         "label": "Archived",
+         "text": "Retained — read-only"
+        }
+       ]
+      },
+      {
+       "label": "Store Close Report",
+       "items": [
+        {
+         "label": "Draft",
+         "text": "Not applicable — no window has run"
+        },
+        {
+         "label": "Open",
+         "text": "Not yet generated — becomes available on close"
+        },
+        {
+         "label": "Closed",
+         "text": "Auto-triggers on first workspace entry after close; available on demand from the Reports tab"
+        },
+        {
+         "label": "Archived",
+         "text": "Viewable read-only; exports still available"
+        }
+       ]
+      },
+      {
+       "label": "Overview KPI — Open Stores count",
+       "items": [
+        {
+         "label": "Draft",
+         "text": "Not counted"
+        },
+        {
+         "label": "Open",
+         "text": "Counted"
+        },
+        {
+         "label": "Closed",
+         "text": "Not counted"
+        },
+        {
+         "label": "Archived",
+         "text": "Not counted"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.12",
+   "name": "Store Close Report",
+   "link": "Technical Spec: Store Status & Lifecycle — Store Close Report",
+   "blocks": [
+    {
+     "heading": "Store Close Report",
+     "items": [
+      "The moment a store closes is the one moment a rep needs the whole window summarized in one place — and today nothing does that. The rep is left assembling the picture manually across the Reports tab, the Orders tab, and the Fundraising Report. The Store Close Report closes that gap and becomes the opening step of the store-closing flow.",
+      "This section defines the behavioral contract for the report. The Reports tab owns the on-demand entry point and the report UI itself; the Store Status card owns the secondary link."
+     ]
+    },
+    {
+     "heading": "Definition & scope",
+     "items": [
+      "The Store Close Report is a complete review of every order placed during the store’s Active Order Window (open date → close date), plus summarized performance data for that window. It serves two jobs at once:",
+      {
+       "label": "Summary layer",
+       "text": "a card-paced, progressively revealed recap of the window’s headline numbers, designed to be read in under a minute and shared with the team or league."
+      },
+      {
+       "label": "Detail layer",
+       "text": "the full order-level operational record the rep verifies, reconciles, and exports for fulfilment."
+      },
+      "The report is generated per close event. A close event is any transition into Closed, whether manual (Close Store) or automatic (ordering window close date reached). A store that is re-opened and later closed again produces a new close event with a new report scoped to the new window; prior reports are retained.",
+      {
+       "label": "Note",
+       "text": "The Close Report is a read layer only. It introduces no new metrics, no new state, and no changes to the lifecycle state machine, notifications, or the buyer-facing closed storefront screen. Every figure it shows is sourced from — and must reconcile exactly with — the Reports tab and the Orders tab."
+      }
+     ]
+    },
+    {
+     "heading": "Trigger & presentation",
+     "items": [
+      {
+       "label": "Auto-trigger condition",
+       "text": "the store is in Closed state and the current user has not yet seen the report for this close event."
+      },
+      {
+       "label": "Presentation",
+       "text": "a prominent full-screen modal (a dedicated full-page route at narrow viewport widths) shown on first workspace entry after close. It kicks off the closing flow and serves as the presentation of the Epic C rep notification. The summary layer uses the shared paced card sequence shell specified in System Modals & Toasts — this section owns the card payload and the trigger, not the shell."
+      },
+      {
+       "label": "Seen state is per user",
+       "text": "A rep and an invited team-manager-role user each see the auto-trigger once for the same close event."
+      },
+      {
+       "label": "Dismissal",
+       "text": "primary action View full report (opens the detail layer); secondary Done / close icon; Escape key and backdrop click also dismiss. Any dismissal marks the report as seen for that user."
+      },
+      {
+       "label": "Subsequent visits",
+       "text": "no auto-trigger. The workspace shows the normal Closed state and the report is reachable on demand."
+      },
+      {
+       "label": "Re-close",
+       "text": "Closed → Open → Closed re-arms the auto-trigger once for the new close event."
+      },
+      {
+       "label": "Always-open (non-pop-up) stores",
+       "text": "no scheduled close date exists, so the auto-trigger only fires after a manual Close Store."
+      },
+      {
+       "label": "Archived stores",
+       "text": "the report remains viewable on demand as part of the read-only record; no auto-trigger fires."
+      }
+     ]
+    },
+    {
+     "heading": "On-demand access",
+     "items": [
+      {
+       "label": "Primary entry point — Reports tab",
+       "text": "A Store Close Report entry sits at the top of the Reports tab. It is available when the store is Closed or Archived; for Draft and Open stores it renders disabled with helper text (“Available when the store closes”)."
+      },
+      {
+       "label": "Secondary entry point — Store Status card",
+       "text": "A View Close Report link sits alongside the Close Store / Re-open Store actions, so the report is reachable from the same card that governs the transition."
+      },
+      {
+       "label": "Review mode",
+       "text": "Opening on demand lands on the summary layer with all controls visible and no forced pacing, with the detail layer one click away. The user is never trapped in the paced sequence."
+      }
+     ]
+    },
+    {
+     "heading": "Report contents",
+     "items": [
+      "Layer · Contents",
+      {
+       "label": "Summary layer (hero treatment, one figure per view)",
+       "text": "Total Revenue · Orders · Net Fundraising (only when Team Fundraising is enabled; Avg. Order Value is promoted into this slot when it is disabled) · one derived superlative — top product by quantity ordered. Each figure carries its exact value, its unit, and an “as of [close date]” stamp, plus the vs.-last-period trend delta the KPI cards already use."
+      },
+      {
+       "label": "Detail layer (tables and charts)",
+       "text": "Full order table scoped to the window, at line-item grain: Web Order #, Factory Order #, order origin badge, buyer, roster / team, product, size, quantity, unit price, line total, personalization (name / number), production stage, PO number, tracking, fulfilment status, and any Minimum Quantity Fee — with the existing Orders toolbar (search, sort, filter, date range, column visibility, row selection). Plus the Team Profit chart for the window; Pending Orders count and any below-MOQ containers still open at close; the Fundraising Report breakdown (Fundraising Collected, Platform Fees, Card Processing Fees, Net Fundraising); Avg. Order Value; the production-stage mix (Order placed → Confirmed → Artwork → Factory production → Shipped → Delivered); and a refunds / cancellations summary."
+      },
+      "Refunds and cancellations net out of revenue consistently with the Reports tab, and the netting is stated on the report so the summary and detail figures always reconcile."
+     ]
+    },
+    {
+     "heading": "Exports",
+     "items": [
+      {
+       "label": "Summary PDF",
+       "text": "a presentation-ready one-pager carrying store name, Team Logo and Team Colors, the Active Order Window dates, the hero figures, and the Team Profit trend. Follows the existing Fundraising Report Download PDF pattern, including a settings step (summary style, detailed breakdown, selected date range, report notes)."
+      },
+      {
+       "label": "Full order-level CSV",
+       "text": "every order in the window at line-item grain, following the existing All Orders CSV Export pattern and respecting the current column-visibility selection."
+      },
+      {
+       "label": "PDF and CSV are the only export formats",
+       "text": "No image or share-card export is in scope."
+      },
+      {
+       "label": "File naming",
+       "text": "StoreCloseReport_[StoreName]_[CloseDate].pdf and StoreCloseReport_[StoreName]_[CloseDate].csv."
+      }
+     ]
+    },
+    {
+     "heading": "Roles & permissions",
+     "items": [
+      {
+       "label": "Rep / store owner",
+       "text": "full access to the report and both exports."
+      },
+      {
+       "label": "Team-manager role",
+       "text": "full parity with the rep for this report — a team-manager-role user may view and export everything the report contains. Owner-only lifecycle actions (notably Archive Store, per Epic E) remain hidden and are unaffected."
+      },
+      "No separate dealer or decorator view is required."
+     ]
+    },
+    {
+     "heading": "Experience principles",
+     "items": [
+      "The report is data-dense but must read as accessible and familiar rather than as a spreadsheet — the reference points are Apple Music Replay and Spotify Wrapped, adapted with restraint for an operator who has to trust the numbers.",
+      {
+       "label": "Step down, don’t wall off",
+       "text": "Cover → three to five hero figures → a full recap card → a clear handoff into the detail tables. A persistent Skip to full report control and a progress indicator are visible at all times."
+      },
+      {
+       "label": "User-paced",
+       "text": "One figure per view, advanced by click, tap, or arrow keys. No auto-advance."
+      },
+      {
+       "label": "Restrained motion",
+       "text": "Fades and scale-ins around 200–300ms; a count-up on the hero figure only. No parallax or confetti, and no looping animation on a figure card — motion must never compete with a number the rep is being asked to trust. Motion is otherwise specified once for both paced card sequences in System Modals & Toasts; there is no in-product reduce-motion control."
+      },
+      {
+       "label": "Three type levels only",
+       "text": "hero figure, section header, label — with tabular lining numerals throughout so figures align and do not jitter during count-up."
+      },
+      {
+       "label": "Store-owned palette",
+       "text": "The report uses the store’s configured Team Colors and Team Logo. Color communicates status (trend up / down) rather than decoration."
+      },
+      {
+       "label": "Trustworthy by default",
+       "text": "Every hero view shows the exact figure and its as-of date. Celebratory framing is suppressed wherever the data does not support it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.13",
+   "name": "Edge cases",
+   "link": "Technical Spec: Store Status & Lifecycle — Edge cases",
+   "blocks": [
+    {
+     "heading": "Edge cases",
+     "items": [
+      "Case · Behavior",
+      {
+       "label": "Zero orders in the window",
+       "text": "Superlatives and celebratory framing are suppressed. The report shows a calm factual summary of the window and its dates, and the detail layer shows an empty state. Exports still produce valid files with headers and zero rows."
+      },
+      {
+       "label": "Very low order count (single order)",
+       "text": "The top-product superlative degrades to that one order and is phrased so it does not imply a ranking that does not exist."
+      },
+      {
+       "label": "Closed with unfulfilled / in-production orders",
+       "text": "The summary layer still reports window totals. The detail layer surfaces a prominent count of orders not yet shipped alongside the production-stage mix, reinforcing that existing orders continue to process after close."
+      },
+      {
+       "label": "Closed with unsettled payment (open PO)",
+       "text": "Affected orders are flagged in the detail table and summarized in a needs-attention strip. Framing is factual, not alarmist."
+      },
+      {
+       "label": "Refunds and cancellations present",
+       "text": "A refunds / cancellations summary (count and amount) appears in the detail layer, netted against revenue consistently with the Reports tab, with the netting stated on the report."
+      },
+      {
+       "label": "Below-MOQ containers still open at close",
+       "text": "Listed in the detail layer with their MOQ progress and any itemized Minimum Quantity Fee, so the rep can see what did not reach minimum before the window closed."
+      },
+      {
+       "label": "Very large stores",
+       "text": "The summary layer is fixed size regardless of order volume. The detail table paginates and virtualizes; exports still contain the complete data set."
+      },
+      {
+       "label": "Team Fundraising disabled",
+       "text": "The Net Fundraising hero figure and the fundraising breakdown are omitted entirely; Avg. Order Value is promoted into the vacated hero slot."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.14",
+   "name": "Metrics & Success Criteria",
+   "link": "Technical Spec: Store Status & Lifecycle — Metrics & Success Criteria",
+   "blocks": [
+    {
+     "heading": "Metrics & Success Criteria",
+     "items": [
+      "Launch gate enforcement: 0% of stores successfully launch with zero products",
+      "Draft-to-launch conversion rate (signal for setup friction)",
+      "Auto-close accuracy: 100% of pop-up stores transition to Closed at their configured close date/time",
+      "Zero buyer orders accepted while a store is in Closed or Archived state",
+      "Close → re-open cycle time (signal for how quickly reps act after a window closes)",
+      "Archive rate per season (adoption of intentional lifecycle management vs. stores abandoned in Open)",
+      "Support tickets for archive reversal (informs whether a self-service undo path is needed)",
+      "Close Report generation reliability: 100% of close events produce a viewable report",
+      "Close Report engagement rate on first workspace entry after close (share of auto-triggered modals viewed rather than immediately dismissed)",
+      "Share of close events where the report is exported as PDF or CSV (signal for whether it is replacing manual assembly)",
+      "On-demand Close Report views per closed store (signal for whether the report is being returned to, not just seen once)",
+      "Skip-to-full-report rate (signal for whether the summary layer earns its place ahead of the detail tables)",
+      "Reduction in manual Reports-tab + Orders-tab + Fundraising Report sessions in the 48 hrs following a close"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "FR-6.15",
+   "name": "Dependencies & Technical Constraints",
+   "link": "Technical Spec: Store Status & Lifecycle — Dependencies & Technical Constraints",
+   "blocks": [
+    {
+     "heading": "Dependency & Technical Constraint",
+     "items": [
+      "Verification is a manual, asynchronous process — not an automated check. Requires: secure database storage for application submissions (business-entity fields incl. EIN and banking, with sensitive-data handling/encryption); an internal admin review queue and tooling plus a notification service for the Prolook reviewer; and a persistent access-grant/entitlement model (not session-only). Approval introduces a 24–48 hr waiting period between submission and access. Likely third-party integrations for banking/EIN validation and applicant email notification."
+     ]
+    },
+    {
+     "heading": "Store Close Report — dependencies",
+     "items": [
+      "Requires a per-user, per-close-event seen-state record (not session-only) so the auto-trigger fires exactly once per user per close event and survives re-close. Requires a durable close-event record capturing the window’s open and close timestamps and the trigger source (rep name or “system” for auto-close, consistent with System Emails), so a re-opened-and-re-closed store produces correctly scoped, non-overwriting reports. Report aggregation must read from the same source as the Reports tab KPI cards and the Fundraising Report rather than recomputing, or the summary and detail layers will diverge. PDF generation follows the existing Fundraising Report export service; CSV follows the All Orders export service. The summary layer's shell is the shared paced card sequence component specified in System Modals & Toasts."
+     ]
+    }
+   ]
+  }
+ ],
+ "phased": [],
+ "references": [
+  {
+   "name": "Final Design Figma Link",
+   "location": ""
+  },
+  {
+   "name": "Monday ticket",
+   "location": ""
+  },
+  {
+   "name": "Hand-off Video",
+   "location": ""
+  },
+  {
+   "name": "Technical Specs",
+   "location": "input/requirements/TS-Store Status & Lifecycle-161026-094525.pdf"
+  },
+  {
+   "name": "JIRA Ticket",
+   "location": ""
+  }
+ ]
+}

@@ -1,0 +1,205 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+// ── Hero ──
+.hero {
+  text-align: center;
+  padding: 96px 56px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  &__title {
+    margin: 28px auto 0;
+    max-width: 960px;
+    font-size: 74px;
+    line-height: 1.02;
+    font-weight: $fw-black;
+    letter-spacing: -2.5px;
+    color: $text-primary;
+  }
+
+  &__lead {
+    margin: 28px auto 0;
+    max-width: 632px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: $text-secondary;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $sp-4;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}
+
+// ── Browser-framed dashboard mockup ──
+.mockup {
+  max-width: $container-max;
+  margin: 68px auto 0;
+  border: 1px solid $border-default;
+  border-bottom: 0;
+  border-radius: $radius-lg $radius-lg 0 0;
+  overflow: hidden;
+  box-shadow: 0 -1px 0 $border-default, $shadow-float;
+  text-align: left;
+
+  &__chrome {
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+    padding: $sp-4;
+    background: $zinc-100;
+    border-bottom: 1px solid #e9e9eb;
+  }
+
+  &__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $border-default;
+  }
+
+  &__body {
+    background: $surface-subtle;
+    padding: 28px 32px 36px;
+  }
+
+  &__kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $sp-4;
+    margin-bottom: $sp-4;
+  }
+
+  &__split {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: $sp-4;
+  }
+}
+
+// Bar chart (pure CSS)
+.barchart {
+  display: flex;
+  align-items: flex-end;
+  gap: $sp-2;
+  height: 120px;
+
+  &__bar {
+    flex: 1;
+    background: $border-default;
+    border-radius: 4px 4px 0 0;
+
+    &--mid    { background: $zinc-300; }
+    &--high   { background: $zinc-400; }
+    &--higher { background: $zinc-600; }
+    &--ink    { background: $zinc-800; }
+    &--accent { background: $red-500; }
+  }
+}
+
+// Ordering-window row
+.window-row {
+  padding: $sp-3 0;
+  border-bottom: 1px solid #f1f1f3;
+
+  &:last-child { border-bottom: 0; }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $sp-3;
+    margin-bottom: $sp-2;
+  }
+
+  &__info { flex: 1; min-width: 0; }
+
+  &__name {
+    font-size: 12.5px;
+    font-weight: $fw-bold;
+    color: $zinc-800;
+    @include truncate;
+  }
+
+  &__meta {
+    font-size: 11px;
+    color: $text-muted;
+    margin-top: 1px;
+
+    strong { color: $zinc-800; font-weight: $fw-medium; }
+  }
+
+  &__track { margin-left: 40px; }
+}
+
+// ── Features grid ──
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $sp-4;
+  margin-top: $sp-7;
+}
+
+// ── FAQ ──
+.faq {
+  padding: 84px 56px 100px;
+  background: $surface-subtle;
+
+  &__inner {
+    @include container(860px);
+  }
+
+  &__head {
+    text-align: center;
+    margin-bottom: $sp-7;
+  }
+
+  &__item {
+    border-bottom: 1px solid $border-default;
+  }
+
+  &__q {
+    @include flex-between;
+    gap: $sp-4;
+    padding: $sp-5 $sp-1;
+    font-size: 18px;
+    font-weight: $fw-medium;
+    color: $text-primary;
+  }
+
+  &__chev {
+    font-size: 24px;
+    color: $red-500;
+    font-weight: $fw-book;
+    line-height: 1;
+    transition: transform $dur-base $ease-brand;
+  }
+
+  &__item[open] .faq__chev { transform: rotate(45deg); }
+
+  &__a {
+    margin: 0 $sp-1 $sp-5;
+    max-width: 680px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: $text-secondary;
+  }
+}
+
+// ── CTA band ──
+.cta-band {
+  @include container;
+  @include flex-between;
+  gap: $sp-7;
+  flex-wrap: wrap;
+}
+
+// Data-driven bar heights (mockup chart)
+$mockup-bars: 40 55 48 66 60 78 70 88 82 100 74 90;
+.barchart__bar {
+  @for $i from 1 through length($mockup-bars) {
+    &:nth-child(#{$i}) { height: #{nth($mockup-bars, $i)}#{"%"}; }
+  }
+}

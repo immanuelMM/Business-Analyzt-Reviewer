@@ -1,0 +1,46 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.site-footer {
+  @include flex-between;
+  padding: $sp-6 56px;
+  background: $zinc-950;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $sp-3;
+
+    img { height: 24px; width: auto; }
+  }
+
+  &__wordmark {
+    font-size: 12px;
+    font-weight: $fw-bold;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-2;
+    font-size: 13px;
+    font-weight: $fw-medium;
+    color: $zinc-300;
+
+    &:hover { color: #fff; }
+  }
+
+  &__legal {
+    font-size: 13px;
+    color: $zinc-500;
+  }
+}

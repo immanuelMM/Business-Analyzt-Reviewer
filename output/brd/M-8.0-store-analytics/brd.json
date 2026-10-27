@@ -1,0 +1,494 @@
+{
+  "file_prefix": "Team Store",
+  "module": {
+    "id": "M-8.0",
+    "name": "Store Analytics (Reports Tab)",
+    "element": "",
+    "items": [
+      {
+        "label": "The Problem",
+        "text": "The platform's main Overview dashboard reports across all of a rep's stores. A rep managing a single team store has no equivalent, store-scoped read on how that store is performing — revenue, order volume, pending work, and fundraising — without mentally filtering the global view."
+      },
+      {
+        "label": "The Solution",
+        "text": "A Reports tab inside the manage-store workspace that summarizes every data point to the currently-viewed store. KPI summary cards, team/league revenue chart, followed by a Fundraising Report — a date-ranged breakdown of fundraising collected, fees, and net, with a configurable PDF export."
+      },
+      "Who is this for? The store manager (rep) reviewing performance of the specific store they're in.",
+      {
+        "label": "Scenarios encountered",
+        "text": "Checking a single store's team revenue and order counts; watching team revenue accrue over the window; reviewing fundraising collected vs. net after fees for a date range; downloading a fundraising PDF for the team; jumping from the Orders / Pending Orders KPI cards straight into the Orders tab; reading the fundraising figures for a store where fundraising has since been switched off but ordered items are still collecting."
+      }
+    ]
+  },
+  "header": {
+    "project_name": "Team Store (Store Analytics — Reports Tab)",
+    "type": "New Project",
+    "stakeholder": "Cody, Connor",
+    "us_uiux": "",
+    "ba_author": "Immanuel Mahusay",
+    "project_manager": "Ma. Giselle Dionisio",
+    "development_team": "",
+    "sqa_team": "",
+    "other_teams": "",
+    "priority": "",
+    "brand": ""
+  },
+  "versions": [
+    {
+      "version": "v1.0.0",
+      "br_fr": "FR-8.1 – FR-8.6",
+      "remarks": "Initial BRD formatted from TS-Store Analytics (Reports Tab)-161026-094501.pdf",
+      "date": "2026-10-19"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-8.1",
+      "name": "Functional Requirements & Core Workflows",
+      "subtitle": "Epic A — Reports tab composition",
+      "link": "Technical Spec: Store Analytics (Reports Tab) — Epic A",
+      "blocks": [
+        {
+          "heading": "User Stories",
+          "items": [
+            "As a rep, I want a per-store version of the Overview dashboard, so that I can read this store's performance without filtering the global view.",
+            "As a rep, I want a fundraising report showing what was collected, what fees came out, and the net amount, so that I can account to the team for their fundraising money.",
+            "As a rep, I want to export the fundraising figures as a configurable PDF, so that I can share or archive them.",
+            "As a rep who has switched fundraising off mid-season, I want the fundraising figures to stay visible while ordered items are still collecting, so that I can still account for money that is still coming in."
+          ]
+        },
+        {
+          "heading": "Epic A — Reports tab composition",
+          "items": [
+            {
+              "text": "The Reports tab is a store-scoped analytics page in its own right, not a per-store rendering of the workspace Overview dashboard. Every figure on it is scoped to the currently-viewed store. The page stacks three components, in order:",
+              "items": [
+                {
+                  "label": "KPI summary row",
+                  "text": "four cards: Total Revenue, Orders (total), Pending Orders (total), and Average Order Value. Specified in Epic B."
+                },
+                {
+                  "label": "Team Revenue chart",
+                  "text": "a large, full-width bar chart below the KPI row, titled League Revenue and filterable by team or division in league stores. Specified in Epic C."
+                },
+                {
+                  "label": "Team Fundraising Report",
+                  "text": "a full-width report container, rendered conditionally. Specified in Epic D."
+                }
+              ]
+            },
+            {
+              "label": "Fundraising Report visibility",
+              "text": "The Team Fundraising Report is present only when team fundraising is enabled at the store level, or when any individual item within the store has fundraising enabled. When neither holds, the page ends at the Team Revenue chart. Epic D carries the full render conditions, including the case where a store-level disable leaves already-ordered items still collecting."
+            },
+            {
+              "label": "Component ownership",
+              "text": "The four KPI summary cards reuse the Overview dashboard's KPI card components — that sharing is deliberate and should be maintained. The Team Revenue chart and the Team Fundraising Report are independent components owned by this page. Neither is the Overview's chart re-pointed at a single store, and changes made to the Overview's graph cards do not propagate to them."
+            },
+            "There is no separate header Export action — export lives on the Fundraising Report as Download PDF.",
+            {
+              "label": "OPEN — to be confirmed",
+              "text": "whether the Team Revenue chart carries a Day / Month / Year granularity toggle and a highlighted current-period bar. The workspace Overview has added both to its Dealer Profit and Revenue graph cards, but because the Team Revenue chart is an independent component it does not inherit them by default — this is a standalone design decision for this page."
+            }
+          ]
+        }
+      ],
+      "next": "FR-8.2",
+      "children": [
+        {
+          "id": "FR-8.1.1",
+          "caption": "Reports tab (store-scoped analytics page)",
+          "items": [
+            "As a rep, I want a per-store version of the Overview dashboard, so that I can read this store's performance without filtering the global view.",
+            {
+              "text": "The Reports tab is a store-scoped analytics page in its own right, not a per-store rendering of the workspace Overview dashboard. Every figure on it is scoped to the currently-viewed store. The page stacks three components, in order:",
+              "items": [
+                {
+                  "label": "KPI summary row",
+                  "text": "four cards: Total Revenue, Orders (total), Pending Orders (total), and Average Order Value. Specified in Epic B."
+                },
+                {
+                  "label": "Team Revenue chart",
+                  "text": "a large, full-width bar chart below the KPI row, titled League Revenue and filterable by team or division in league stores. Specified in Epic C."
+                },
+                {
+                  "label": "Team Fundraising Report",
+                  "text": "a full-width report container, rendered conditionally. Specified in Epic D."
+                }
+              ]
+            },
+            {
+              "label": "Component ownership",
+              "text": "The four KPI summary cards reuse the Overview dashboard's KPI card components — that sharing is deliberate and should be maintained. The Team Revenue chart and the Team Fundraising Report are independent components owned by this page. Neither is the Overview's chart re-pointed at a single store, and changes made to the Overview's graph cards do not propagate to them."
+            },
+            "There is no separate header Export action — export lives on the Fundraising Report as Download PDF.",
+            {
+              "label": "OPEN — to be confirmed",
+              "text": "whether the Team Revenue chart carries a Day / Month / Year granularity toggle and a highlighted current-period bar. The workspace Overview has added both to its Dealer Profit and Revenue graph cards, but because the Team Revenue chart is an independent component it does not inherit them by default — this is a standalone design decision for this page."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.1.2",
+          "caption": "Team Fundraising Report container (conditional)",
+          "items": [
+            "As a rep who has switched fundraising off mid-season, I want the fundraising figures to stay visible while ordered items are still collecting, so that I can still account for money that is still coming in.",
+            {
+              "label": "Team Fundraising Report",
+              "text": "a full-width report container, rendered conditionally. Specified in Epic D."
+            },
+            {
+              "label": "Fundraising Report visibility",
+              "text": "The Team Fundraising Report is present only when team fundraising is enabled at the store level, or when any individual item within the store has fundraising enabled. When neither holds, the page ends at the Team Revenue chart. Epic D carries the full render conditions, including the case where a store-level disable leaves already-ordered items still collecting."
+            },
+            "There is no separate header Export action — export lives on the Fundraising Report as Download PDF."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FR-8.2",
+      "name": "Functional Requirements & Core Workflows",
+      "subtitle": "Epic B — Top-row KPI summary cards (4)",
+      "link": "Technical Spec: Store Analytics (Reports Tab) — Epic B",
+      "blocks": [
+        {
+          "heading": "Epic B — Top-row KPI summary cards (4)",
+          "items": [
+            "As a rep, I want a per-store version of the Overview dashboard, so that I can read this store's performance without filtering the global view.",
+            "A horizontal row of four uniform KPI summary cards using the same card design as the Overview dashboard, each showing a value and a trend vs. last month.",
+            {
+              "label": "Card 1 · Total Revenue",
+              "text": "total dollar amount (e.g. $3,810) and percentage trend vs. last month (e.g. 12.4% vs last month)."
+            },
+            {
+              "label": "Card 2 · Orders",
+              "text": "total volume count of closed sales (e.g. 83) and directional trend. The card is clickable and jumps to the Orders tab's All Orders view."
+            },
+            {
+              "label": "Card 3 · Pending Orders",
+              "text": "count of active orders currently processing and trend. The card is clickable and jumps to the Orders tab's Pending Orders sub-tab."
+            },
+            {
+              "label": "Card 4 · Avg. Order Value",
+              "text": "average amount spent per order/session (e.g. $46) and trend vs. last month."
+            }
+          ]
+        }
+      ],
+      "next": "FR-8.3",
+      "children": [
+        {
+          "id": "FR-8.2.1",
+          "caption": "Card 1 · Total Revenue",
+          "items": [
+            "As a rep, I want a per-store version of the Overview dashboard, so that I can read this store's performance without filtering the global view.",
+            "A horizontal row of four uniform KPI summary cards using the same card design as the Overview dashboard, each showing a value and a trend vs. last month.",
+            {
+              "label": "Card 1 · Total Revenue",
+              "text": "total dollar amount (e.g. $3,810) and percentage trend vs. last month (e.g. 12.4% vs last month)."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.2.2",
+          "caption": "Card 2 · Orders",
+          "items": [
+            "As a rep, I want a per-store version of the Overview dashboard, so that I can read this store's performance without filtering the global view.",
+            "A horizontal row of four uniform KPI summary cards using the same card design as the Overview dashboard, each showing a value and a trend vs. last month.",
+            {
+              "label": "Card 2 · Orders",
+              "text": "total volume count of closed sales (e.g. 83) and directional trend. The card is clickable and jumps to the Orders tab's All Orders view."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.2.3",
+          "caption": "Card 3 · Pending Orders",
+          "items": [
+            "As a rep, I want a per-store version of the Overview dashboard, so that I can read this store's performance without filtering the global view.",
+            "A horizontal row of four uniform KPI summary cards using the same card design as the Overview dashboard, each showing a value and a trend vs. last month.",
+            {
+              "label": "Card 3 · Pending Orders",
+              "text": "count of active orders currently processing and trend. The card is clickable and jumps to the Orders tab's Pending Orders sub-tab."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.2.4",
+          "caption": "Card 4 · Avg. Order Value",
+          "items": [
+            "As a rep, I want a per-store version of the Overview dashboard, so that I can read this store's performance without filtering the global view.",
+            "A horizontal row of four uniform KPI summary cards using the same card design as the Overview dashboard, each showing a value and a trend vs. last month.",
+            {
+              "label": "Card 4 · Avg. Order Value",
+              "text": "average amount spent per order/session (e.g. $46) and trend vs. last month."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FR-8.3",
+      "name": "Functional Requirements & Core Workflows",
+      "subtitle": "Epic C — Team Revenue chart (League Revenue in league stores)",
+      "link": "Technical Spec: Store Analytics (Reports Tab) — Epic C",
+      "blocks": [
+        {
+          "heading": "Epic C — Team Revenue chart (League Revenue in league stores)",
+          "items": [
+            "Renamed from the Team Profit chart, September 1, 2026. The former name described a margin figure derived from the Team Profit input; with that input removed, the chart reports revenue attributable to the team instead.",
+            {
+              "label": "Team Revenue chart",
+              "text": "Given the Reports tab, then it implements a vertical column bar chart— identical bar widths, gray axis baseline, and spacing — re-purposed to map team revenue over time, spanning the full content width below the KPI row."
+            },
+            {
+              "label": "This is a revenue chart, not a margin chart",
+              "text": "The rename is not cosmetic. The former chart plotted the team's margin; the new one plots revenue. Any copy, axis label, tooltip, or export header describing it as profit or margin must be updated, or the chart will read as the old metric under a new name."
+            },
+            {
+              "label": "RESOLVED — September 11, 2026. Definition confirmed",
+              "text": "Team revenue resolves to gross buyer spend on orders attributable to the team — not fundraising collected. The series aggregates the full buyer-paid amount on those orders. Because fundraising collected is a distinct figure reported in the Fundraising Report below (Epic D), the chart and the report are not two views of the same money, and both stay on the page. The aggregation is settled and the series can be built."
+            },
+            {
+              "label": "League stores — League Revenue",
+              "text": "In a league store the component is titled League Revenue and reports gross buyer spend on orders attributable to all teams and divisions within the league, rather than a single team. It additionally carries a filter control allowing the rep to narrow the revenue shown to a specific team or division within the league. In a single-team store the component keeps the Team Revenue title, reports that one team's revenue, and carries no filter."
+            },
+            "The Payouts tracker widget is not part of the Reports tab in the current build — payout status is covered by the cross-store Overview dashboard; the space below the chart is occupied by the Fundraising Report (Epic D)."
+          ]
+        }
+      ],
+      "next": "FR-8.4",
+      "children": [
+        {
+          "id": "FR-8.3.1",
+          "caption": "Team Revenue chart (single-team store)",
+          "items": [
+            "Renamed from the Team Profit chart, September 1, 2026. The former name described a margin figure derived from the Team Profit input; with that input removed, the chart reports revenue attributable to the team instead.",
+            {
+              "label": "Team Revenue chart",
+              "text": "Given the Reports tab, then it implements a vertical column bar chart— identical bar widths, gray axis baseline, and spacing — re-purposed to map team revenue over time, spanning the full content width below the KPI row."
+            },
+            {
+              "label": "This is a revenue chart, not a margin chart",
+              "text": "The rename is not cosmetic. The former chart plotted the team's margin; the new one plots revenue. Any copy, axis label, tooltip, or export header describing it as profit or margin must be updated, or the chart will read as the old metric under a new name."
+            },
+            {
+              "label": "RESOLVED — September 11, 2026. Definition confirmed",
+              "text": "Team revenue resolves to gross buyer spend on orders attributable to the team — not fundraising collected. The series aggregates the full buyer-paid amount on those orders. Because fundraising collected is a distinct figure reported in the Fundraising Report below (Epic D), the chart and the report are not two views of the same money, and both stay on the page. The aggregation is settled and the series can be built."
+            },
+            {
+              "label": "OPEN — to be confirmed",
+              "text": "whether the Team Revenue chart carries a Day / Month / Year granularity toggle and a highlighted current-period bar. The workspace Overview has added both to its Dealer Profit and Revenue graph cards, but because the Team Revenue chart is an independent component it does not inherit them by default — this is a standalone design decision for this page."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.3.2",
+          "caption": "League Revenue chart with team / division filter (league store)",
+          "items": [
+            {
+              "label": "League stores — League Revenue",
+              "text": "In a league store the component is titled League Revenue and reports gross buyer spend on orders attributable to all teams and divisions within the league, rather than a single team. It additionally carries a filter control allowing the rep to narrow the revenue shown to a specific team or division within the league. In a single-team store the component keeps the Team Revenue title, reports that one team's revenue, and carries no filter."
+            },
+            {
+              "label": "RESOLVED — September 11, 2026. Definition confirmed",
+              "text": "Team revenue resolves to gross buyer spend on orders attributable to the team — not fundraising collected. The series aggregates the full buyer-paid amount on those orders. Because fundraising collected is a distinct figure reported in the Fundraising Report below (Epic D), the chart and the report are not two views of the same money, and both stay on the page. The aggregation is settled and the series can be built."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FR-8.4",
+      "name": "Functional Requirements & Core Workflows",
+      "subtitle": "Epic D — Fundraising Report",
+      "link": "Technical Spec: Store Analytics (Reports Tab) — Epic D",
+      "blocks": [
+        {
+          "heading": "Epic D — Fundraising Report",
+          "items": [
+            "As a rep, I want a fundraising report showing what was collected, what fees came out, and the net amount, so that I can account to the team for their fundraising money.",
+            "As a rep, I want to export the fundraising figures as a configurable PDF, so that I can share or archive them.",
+            "As a rep who has switched fundraising off mid-season, I want the fundraising figures to stay visible while ordered items are still collecting, so that I can still account for money that is still coming in.",
+            "A full-width report card accounting for the store's team-fundraising money.",
+            {
+              "label": "Render conditions",
+              "text": "The report renders when Team Fundraising is enabled for the store (Settings → Store Details), or when the store has any item still collecting fundraising despite a store-level disable. The second condition exists because the commercial lock outranks the store-level disable: an item carrying a non-cancelled order keeps collecting the fundraising its buyers already paid, and hiding the report would conceal money that is still arriving. The report is hidden only when no fundraising is enabled and none is being collected."
+            },
+            {
+              "label": "Mixed-state banner",
+              "text": "Given the store-level flag is off while exempted items are still collecting, when the report renders, then it carries a banner stating that fundraising has been disabled for the store and that the figures below cover items that were already ordered. This mirrors the mixed-state treatment on the Settings card (see Store General Settings, Epic A4)."
+            },
+            {
+              "label": "Per-item scope",
+              "text": "Because fundraising is now set per item, the report covers only those items whose fundraising was enabled at the time of the order. An item with fundraising switched off contributes nothing from that point forward but its historical contributions remain in the totals — figures are a record of what was collected, never recalculated against current settings."
+            },
+            {
+              "label": "Date-range picker",
+              "text": "the report header carries a range control with presets — This season (the store's open window), Last 7 days, Last 30 days, Year to date — that scope the figures."
+            },
+            {
+              "label": "Detailed breakdown",
+              "text": "a line-item table lists Fundraising Collected, Platform Fees, Card Processing Fees, and the bolded Net Fundraising total, followed by an analytical sentence summarizing collected → fees → net across all orders to-date."
+            },
+            {
+              "label": "Scope note",
+              "text": "a banner clarifies the report only includes price additions marked as \"Fundraising\" in the item's price settings. Since Team Profit was removed, fundraising is the only team-side markup, so this note now describes the whole of the team's take rather than one slice of it."
+            },
+            {
+              "label": "Configurable PDF export",
+              "text": "Download PDF opens a Fundraising Report Settings modal — a summary-mode radio (Net Fundraising Summary, default, vs. Gross Total Summary) plus report-detail checkboxes (Detailed Breakdown, Selected Date Range, Include PDF Report Notes) — before generating the PDF."
+            }
+          ]
+        }
+      ],
+      "next": "FR-8.5",
+      "children": [
+        {
+          "id": "FR-8.4.1",
+          "caption": "Fundraising Report card",
+          "items": [
+            "As a rep, I want a fundraising report showing what was collected, what fees came out, and the net amount, so that I can account to the team for their fundraising money.",
+            "A full-width report card accounting for the store's team-fundraising money.",
+            {
+              "label": "Render conditions",
+              "text": "The report renders when Team Fundraising is enabled for the store (Settings → Store Details), or when the store has any item still collecting fundraising despite a store-level disable. The second condition exists because the commercial lock outranks the store-level disable: an item carrying a non-cancelled order keeps collecting the fundraising its buyers already paid, and hiding the report would conceal money that is still arriving. The report is hidden only when no fundraising is enabled and none is being collected."
+            },
+            {
+              "label": "Per-item scope",
+              "text": "Because fundraising is now set per item, the report covers only those items whose fundraising was enabled at the time of the order. An item with fundraising switched off contributes nothing from that point forward but its historical contributions remain in the totals — figures are a record of what was collected, never recalculated against current settings."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.4.2",
+          "caption": "Mixed-state banner",
+          "items": [
+            "As a rep who has switched fundraising off mid-season, I want the fundraising figures to stay visible while ordered items are still collecting, so that I can still account for money that is still coming in.",
+            {
+              "label": "Mixed-state banner",
+              "text": "Given the store-level flag is off while exempted items are still collecting, when the report renders, then it carries a banner stating that fundraising has been disabled for the store and that the figures below cover items that were already ordered. This mirrors the mixed-state treatment on the Settings card (see Store General Settings, Epic A4)."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.4.3",
+          "caption": "Date-range picker",
+          "items": [
+            "As a rep, I want a fundraising report showing what was collected, what fees came out, and the net amount, so that I can account to the team for their fundraising money.",
+            {
+              "label": "Date-range picker",
+              "text": "the report header carries a range control with presets — This season (the store's open window), Last 7 days, Last 30 days, Year to date — that scope the figures."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.4.4",
+          "caption": "Detailed breakdown table",
+          "items": [
+            "As a rep, I want a fundraising report showing what was collected, what fees came out, and the net amount, so that I can account to the team for their fundraising money.",
+            {
+              "label": "Detailed breakdown",
+              "text": "a line-item table lists Fundraising Collected, Platform Fees, Card Processing Fees, and the bolded Net Fundraising total, followed by an analytical sentence summarizing collected → fees → net across all orders to-date."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.4.5",
+          "caption": "Scope note banner",
+          "items": [
+            {
+              "label": "Scope note",
+              "text": "a banner clarifies the report only includes price additions marked as \"Fundraising\" in the item's price settings. Since Team Profit was removed, fundraising is the only team-side markup, so this note now describes the whole of the team's take rather than one slice of it."
+            }
+          ]
+        },
+        {
+          "id": "FR-8.4.6",
+          "caption": "Download PDF — Fundraising Report Settings modal",
+          "items": [
+            "As a rep, I want to export the fundraising figures as a configurable PDF, so that I can share or archive them.",
+            {
+              "label": "Configurable PDF export",
+              "text": "Download PDF opens a Fundraising Report Settings modal — a summary-mode radio (Net Fundraising Summary, default, vs. Gross Total Summary) plus report-detail checkboxes (Detailed Breakdown, Selected Date Range, Include PDF Report Notes) — before generating the PDF."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FR-8.5",
+      "name": "Metrics & Success Criteria",
+      "link": "Technical Spec: Store Analytics (Reports Tab) — Metrics & Success Criteria",
+      "blocks": [
+        {
+          "heading": "Metrics & Success Criteria",
+          "items": [
+            "Reports-tab engagement per store",
+            "Fundraising PDF download usage",
+            "Accuracy of store-scoped figures vs. source orders and fundraising line items",
+            "KPI-card click-through to the Orders tab",
+            {
+              "label": "Fundraising Report views on stores in the mixed state",
+              "text": "a read on whether reps go looking for the figures after disabling fundraising, and therefore whether keeping the report visible was the right call"
+            },
+            {
+              "label": "Share of a store's catalog contributing to the fundraising total",
+              "text": "with fundraising now per-item, a low share means reps are using the toggle selectively as intended rather than leaving it uniformly on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FR-8.6",
+      "name": "Dependencies & Technical Constraints",
+      "link": "Technical Spec: Store Analytics (Reports Tab) — Dependencies & Technical Constraints",
+      "blocks": [
+        {
+          "heading": "Dependency & Technical Constraint",
+          "items": [
+            "Reuses the Overview dashboard's KPI-card components, re-pointed at a single store rather than the rep's whole portfolio. Requires store-scoped aggregation (revenue, closed-order count, pending count, average order value, and month-over-month trends) and a team-revenue time series for the chart — replacing the former team-profit series, which has no source now that the Team Profit input is removed — plus cross-tab navigation hooks so the Orders / Pending Orders KPI cards can deep-link into the Orders tab's sub-tabs. The team-revenue series aggregates gross buyer spend on orders attributable to the team (confirmed September 11, 2026), so it reads from order totals rather than from fundraising line items. In league stores the same series must aggregate across all teams and divisions in the league and be filterable by team or division, which requires the order→team and team→division joins to be available to the analytics query.",
+            "The Fundraising Report requires fundraising-flagged price-addition line items aggregated per order and date range, platform-fee and card-processing-fee calculations to derive net fundraising, and a PDF generation path honoring the settings modal (net vs. gross summary; optional breakdown, date range, and report notes).",
+            {
+              "label": "Report gating is no longer a boolean read of the store flag",
+              "text": "It requires a three-state resolution — fundraising enabled; fundraising disabled with no items collecting; fundraising disabled with commercially-locked items still collecting — matching the three-state read specified in Product Catalog Management, Governing rule 3, and surfaced on the Settings card in Store General Settings, Epic A4. The report renders in the first and third states and is hidden only in the second."
+            },
+            "Fundraising line items must be recorded as they were at order time and never recomputed against an item's current fundraising flag, so that switching fundraising off on an item never retroactively alters historical figures. Shared internal order / analytics services."
+          ]
+        }
+      ]
+    }
+  ],
+  "phased": [
+    {
+      "fr": "FR-8.3",
+      "requirement": "The Payouts tracker widget is not part of the Reports tab in the current build — payout status is covered by the cross-store Overview dashboard; the space below the chart is occupied by the Fundraising Report (Epic D).",
+      "phase": "Future",
+      "remarks": "Not part of the Reports tab in the current build — payout status is covered by the cross-store Overview dashboard."
+    }
+  ],
+  "references": [
+    {
+      "name": "Final Design Figma Link",
+      "location": ""
+    },
+    {
+      "name": "Monday ticket",
+      "location": ""
+    },
+    {
+      "name": "Hand-off Video",
+      "location": ""
+    },
+    {
+      "name": "Technical Specs",
+      "location": "input/requirements/TS-Store Analytics (Reports Tab)-161026-094501.pdf"
+    },
+    {
+      "name": "JIRA Ticket",
+      "location": ""
+    }
+  ]
+}
